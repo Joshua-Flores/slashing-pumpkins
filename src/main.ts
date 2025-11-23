@@ -8,6 +8,8 @@ import '@fontsource/inter/400.css'
 import '@fontsource/inter/500.css'
 import '@fontsource/inter/600.css'
 import '@fontsource/inter/700.css'
+import '@fontsource/inter/800.css'
+import '@fontsource/inter/900.css'
 import './assets/main.css'
 
 const app = createApp(App)
@@ -38,6 +40,9 @@ app.use(PrimeVue, {
           --p-primary-800: #9a3412;
           --p-primary-900: #7c2d12;
           --p-primary-950: #431407;
+        }
+        .p-button-label {
+          font-weight: 900;
         }
       `,
     },
