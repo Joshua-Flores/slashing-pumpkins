@@ -20,7 +20,7 @@ import Button from 'primevue/button'
       />
       <img
         src="/public/logo.svg"
-        class="absolute top-1/2 left-1/2 h-4/5 -translate-x-2/5 -translate-y-1/2 drop-shadow-xl drop-shadow-orange-300 filter"
+        class="absolute top-1/2 left-1/2 h-4/5 -translate-x-2/5 -translate-y-1/2 drop-shadow-sm drop-shadow-orange-300 filter"
       />
     </header>
   </div>
