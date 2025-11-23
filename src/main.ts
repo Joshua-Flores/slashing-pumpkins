@@ -19,8 +19,8 @@ app.use(PrimeVue, {
     options: {
       prefix: 'p',
       darkModeSelector: '.dark',
-      cssLayer: false
-    }
+      cssLayer: false,
+    },
   },
   ripple: true,
   pt: {
@@ -39,9 +39,9 @@ app.use(PrimeVue, {
           --p-primary-900: #7c2d12;
           --p-primary-950: #431407;
         }
-      `
-    }
-  }
+      `,
+    },
+  },
 })
 app.directive('ripple', Ripple)
 
