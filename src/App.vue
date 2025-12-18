@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import Button from 'primevue/button'
 import { RouterLink, RouterView } from 'vue-router'
+
+const currentYear = computed(() => new Date().getFullYear())
 </script>
 
 <template>
@@ -24,6 +27,20 @@ import { RouterLink, RouterView } from 'vue-router'
         <component :is="Component" />
       </Transition>
     </RouterView>
+
+    <footer class="bg-black py-4 text-center text-sm text-white">
+      <p>
+        © {{ currentYear }} Fairfax Slashing Pumpkins. Site Design by
+        <a
+          href="https://joshuaflores.rocks"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-orange-400 hover:underline"
+        >
+          Josh Flores
+        </a>
+      </p>
+    </footer>
   </div>
 </template>
 
