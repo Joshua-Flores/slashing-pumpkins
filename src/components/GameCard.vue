@@ -4,6 +4,10 @@ import { computed } from 'vue'
 interface Props {
   opponent: string
   gameDate: Date
+  score?: {
+    slashingPumpkins: number
+    opponent: number
+  }
 }
 
 const props = defineProps<Props>()
@@ -33,6 +37,21 @@ const formattedTime = computed(() => {
     hour12: true,
   })
 })
+
+// Formats the score with W/T/L prefix
+const formattedScore = computed(() => {
+  if (!props.score) return null
+
+  const { slashingPumpkins, opponent } = props.score
+
+  if (slashingPumpkins > opponent) {
+    return `W ${slashingPumpkins}-${opponent}`
+  } else if (slashingPumpkins === opponent) {
+    return `T ${slashingPumpkins}-${opponent}`
+  } else {
+    return `L ${slashingPumpkins}-${opponent}`
+  }
+})
 </script>
 
 <template>
@@ -57,16 +76,28 @@ const formattedTime = computed(() => {
       <div
         class="col-span-2 flex flex-col items-center justify-center gap-1 p-3 md:gap-2"
       >
-        <div
-          class="flex items-center gap-2 text-sm leading-none font-extrabold text-white md:gap-3 md:text-xl"
-        >
-          <span>{{ formattedDate }}</span>
-          <span class="h-full w-0.5 bg-orange-400" />
-          <span>{{ formattedTime }}</span>
-        </div>
-        <span class="text-sm leading-none text-purple-300 md:text-lg">
-          FAIRFAX ICE ARENA
-        </span>
+        <template v-if="formattedScore">
+          <div class="text-sm leading-none text-purple-300 md:text-lg">
+            {{ formattedDate }}
+          </div>
+          <div
+            class="text-2xl leading-none font-extrabold text-white md:text-xl"
+          >
+            {{ formattedScore }}
+          </div>
+        </template>
+        <template v-else>
+          <div
+            class="flex items-center gap-2 text-sm leading-none font-extrabold text-white md:gap-3 md:text-xl"
+          >
+            <span>{{ formattedDate }}</span>
+            <span class="h-full w-0.5 bg-orange-400" />
+            <span>{{ formattedTime }}</span>
+          </div>
+          <span class="text-sm leading-none text-purple-300 md:text-lg">
+            FAIRFAX ICE ARENA
+          </span>
+        </template>
       </div>
     </div>
   </div>
