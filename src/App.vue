@@ -10,8 +10,7 @@ import NextGameCountdown from './components/home/NextGameCountdown.vue'
       class="flex w-full items-center justify-center gap-4 border-b-4 border-orange-400 py-2"
     >
       <Button size="large" text class="font-bold">HOME</Button
-      ><Button size="large" text class="font-bold">SCHEDULE</Button
-      ><Button size="large" text class="font-bold">STATS</Button>
+      ><Button size="large" text class="font-bold">SCHEDULE</Button>
     </nav>
     <header
       class="relative max-h-120 w-full overflow-hidden border-b-4 border-orange-400"
