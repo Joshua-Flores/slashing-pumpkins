@@ -51,7 +51,7 @@ const pad = (num: number) => num.toString().padStart(2, '0')
 <template>
   <div v-if="nextGame && timeLeft" class="flex flex-col items-center">
     <div
-      class="flex gap-8 border-2 border-purple-700 bg-purple-950 px-8 py-6 shadow-2xl"
+      class="flex gap-8 border-4 border-purple-700 bg-gray-900 px-8 py-6 shadow-2xl"
     >
       <div
         v-for="(value, label) in timeLeft"

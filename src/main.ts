@@ -41,9 +41,6 @@ app.use(PrimeVue, {
           --p-primary-900: #7c2d12;
           --p-primary-950: #431407;
         }
-        .p-button-label {
-          font-weight: 900;
-        }
       `,
     },
   },

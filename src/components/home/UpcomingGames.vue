@@ -26,7 +26,7 @@ const upcomingGames = computed(() => {
 </script>
 
 <template>
-  <div class="space-y-2">
+  <div class="space-y-4">
     <GameCard
       v-for="game in upcomingGames"
       :key="game.date.toISOString() + game.opponent"

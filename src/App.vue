@@ -31,7 +31,7 @@ import NextGameCountdown from './components/home/NextGameCountdown.vue'
         class="absolute top-1/2 left-1/2 h-4/5 -translate-x-2/5 -translate-y-1/2 drop-shadow-sm drop-shadow-orange-300 filter"
       />
     </header>
-    <main class="container mx-auto space-y-12 p-8">
+    <main class="container mx-auto max-w-4xl space-y-12 p-8">
       <section>
         <h2
           class="mb-4 text-center text-2xl font-semibold text-white md:text-3xl"
