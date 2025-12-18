@@ -19,6 +19,7 @@ import NextGameCountdown from '@/components/home/NextGameCountdown.vue'
         autoplay
         muted
         loop
+        playsinline
         class="h-full w-full object-cover lg:object-[center_-10rem] xl:object-[center_-20rem]"
         aria-label="hockey players warming up on a rink"
       />
