@@ -1,25 +1,23 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import Button from 'primevue/button'
 import { RouterLink, RouterView } from 'vue-router'
 
 const currentYear = computed(() => new Date().getFullYear())
 </script>
 
 <template>
-  <div class="flex min-h-screen flex-col bg-[#330656]">
+  <div class="flex min-h-screen flex-col bg-purple-950">
     <nav
-      class="flex w-full items-center gap-4 border-b-4 border-orange-400 px-8 py-4"
+      class="sticky top-0 z-50 flex w-full items-center gap-8 border-b-2 border-orange-400 bg-purple-950 px-4 py-4 md:px-8"
     >
       <RouterLink to="/">
-        <img src="./../public/logo.svg" class="w-20" />
+        <img src="/logo.svg" class="w-16" />
       </RouterLink>
-      <RouterLink to="/">
-        <Button size="large" text class="font-bold">HOME</Button>
-      </RouterLink>
-      <RouterLink to="/schedule">
-        <Button size="large" text class="font-bold">SCHEDULE</Button>
-      </RouterLink>
+      <RouterLink
+        to="/schedule"
+        class="text-lg font-bold text-white decoration-orange-400 underline-offset-8 hover:underline"
+        >SCHEDULE</RouterLink
+      >
     </nav>
 
     <RouterView v-slot="{ Component }">
@@ -29,16 +27,24 @@ const currentYear = computed(() => new Date().getFullYear())
     </RouterView>
 
     <footer class="bg-black py-4 text-center text-sm text-white">
+      <p>© {{ currentYear }} Fairfax Slashing Pumpkins.</p>
       <p>
-        © {{ currentYear }} Fairfax Slashing Pumpkins. Site Design by
+        Site design by
         <a
           href="https://joshuaflores.rocks"
           target="_blank"
           rel="noopener noreferrer"
           class="text-orange-400 hover:underline"
         >
-          Josh Flores
-        </a>
+          Josh Flores</a
+        >. Logo design by
+        <a
+          href="https://www.eastcityart.com/author/phil-hutinet/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-orange-400 hover:underline"
+          >Phil Hutinet</a
+        >.
       </p>
     </footer>
   </div>

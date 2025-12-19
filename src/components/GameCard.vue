@@ -68,7 +68,7 @@ const formattedScore = computed(() => {
           alt="VS"
           class="mt-1 h-9 drop-shadow-lg drop-shadow-orange-300 md:mt-2 md:h-12"
         />
-        <span class="leading-snug font-extrabold uppercase md:text-2xl">
+        <span class="text-sm leading-snug font-extrabold uppercase md:text-2xl">
           {{ opponent }}
         </span>
       </div>
@@ -77,13 +77,13 @@ const formattedScore = computed(() => {
         class="col-span-2 flex flex-col items-center justify-center gap-1 p-3 md:gap-2"
       >
         <template v-if="formattedScore">
-          <div class="text-sm leading-none text-purple-300 md:text-lg">
-            {{ formattedDate }}
-          </div>
           <div
             class="text-2xl leading-none font-extrabold text-white md:text-xl"
           >
             {{ formattedScore }}
+          </div>
+          <div class="text-sm leading-none text-purple-300 md:text-lg">
+            FINAL {{ formattedDate }}
           </div>
         </template>
         <template v-else>

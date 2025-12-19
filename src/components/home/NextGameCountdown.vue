@@ -51,14 +51,14 @@ const pad = (num: number) => num.toString().padStart(2, '0')
 <template>
   <div v-if="nextGame && timeLeft" class="flex flex-col items-center">
     <div
-      class="flex gap-8 border-4 border-purple-700 bg-gray-900 px-8 py-6 shadow-2xl"
+      class="flex gap-4 border border-gray-700 bg-gray-900 p-6 shadow-2xl md:gap-8"
     >
       <div
         v-for="(value, label) in timeLeft"
         :key="label"
         class="flex flex-col items-center"
       >
-        <div class="relative text-3xl leading-none md:text-5xl">
+        <div class="relative text-4xl leading-none md:text-5xl">
           <span class="font-digital text-purple-700 opacity-20">88</span>
           <span class="font-digital absolute inset-0 text-orange-400">
             {{ pad(value) }}
