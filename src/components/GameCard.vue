@@ -88,13 +88,15 @@ const formattedScore = computed(() => {
         </template>
         <template v-else>
           <div
-            class="flex items-center gap-2 text-sm leading-none font-extrabold text-white md:gap-3 md:text-xl"
+            class="flex items-center gap-2 text-xs leading-none font-extrabold text-white sm:text-sm md:gap-3 md:text-xl"
           >
             <span>{{ formattedDate }}</span>
             <span class="h-full w-0.5 bg-orange-400" />
             <span>{{ formattedTime }}</span>
           </div>
-          <span class="text-sm leading-none text-purple-300 md:text-lg">
+          <span
+            class="text-xs leading-none text-purple-300 sm:text-sm md:text-lg"
+          >
             FAIRFAX ICE ARENA
           </span>
         </template>

@@ -8,7 +8,7 @@ const currentYear = computed(() => new Date().getFullYear())
 <template>
   <div class="flex min-h-screen flex-col bg-purple-950">
     <nav
-      class="sticky top-0 z-50 flex w-full items-center gap-8 border-b-2 border-orange-400 bg-purple-950 px-4 py-4 md:px-8"
+      class="sticky top-0 z-50 flex w-full items-center gap-6 border-b-4 border-orange-400 px-4 py-4 backdrop-blur-xl md:px-8"
     >
       <RouterLink to="/">
         <img src="/logo.svg" class="w-16" />
