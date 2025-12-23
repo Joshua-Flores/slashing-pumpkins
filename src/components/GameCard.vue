@@ -77,9 +77,7 @@ const formattedScore = computed(() => {
         class="col-span-2 flex flex-col items-center justify-center gap-1 p-3 md:gap-2"
       >
         <template v-if="formattedScore">
-          <div
-            class="text-2xl leading-none font-extrabold text-white md:text-xl"
-          >
+          <div class="text-xl leading-none font-extrabold text-white">
             {{ formattedScore }}
           </div>
           <div class="text-sm leading-none text-purple-300 md:text-lg">

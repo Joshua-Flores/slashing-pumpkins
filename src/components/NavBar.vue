@@ -43,7 +43,7 @@ const menuItems = ref<MenuItem[]>([
           border-0! rounded-none! font-bold
           text-xl! md:text-base!
           p-4! md:p-0! gap-2!
-          bg-linear-to-br! from-purple-950! to-purple-600!
+          max-md:bg-linear-to-br! max-md:from-purple-950! max-md:to-purple-600!
           md:bg-transparent!
           h-screen! md:h-auto!
         `,
@@ -53,7 +53,7 @@ const menuItems = ref<MenuItem[]>([
       },
       button: { class: 'hover:bg-transparent!' },
       buttonIcon: {
-        class: 'md:hidden! w-6! h-6! text-xl! text-orange-400',
+        class: 'md:hidden! w-6! h-6! text-xl! text-orange-300',
       },
     }"
   >

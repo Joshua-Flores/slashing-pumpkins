@@ -24,7 +24,14 @@ export const games: Game[] = [
       opponent: 2,
     },
   },
-  { date: new Date('2025-12-21T22:40:00-05:00'), opponent: 'Hershey Beers' },
+  {
+    date: new Date('2025-12-21T22:40:00-05:00'),
+    opponent: 'Hershey Beers',
+    score: {
+      slashingPumpkins: 2,
+      opponent: 1,
+    },
+  },
   { date: new Date('2026-01-04T20:45:00-05:00'), opponent: 'Blue Dogs' },
   { date: new Date('2026-01-11T20:55:00-05:00'), opponent: 'Megalosaurus' },
   { date: new Date('2026-01-18T16:55:00-05:00'), opponent: 'Thunder' },
