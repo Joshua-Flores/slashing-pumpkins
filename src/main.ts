@@ -10,6 +10,7 @@ import '@fontsource/inter/600.css'
 import '@fontsource/inter/700.css'
 import '@fontsource/inter/800.css'
 import '@fontsource/inter/900.css'
+import 'primeicons/primeicons.css'
 import './styles/main.css'
 
 const app = createApp(App)
