@@ -17,6 +17,10 @@ const menuItems = ref<MenuItem[]>([
     route: '/schedule',
   },
   {
+    label: 'ROSTER',
+    route: '/roster',
+  },
+  {
     label: 'YOUTUBE',
     url: 'https://youtube.com/playlist?list=PLjYNU_fJDirJumOS8EHFEZ1OExdFrsti-&si=su26ivhJd3Y3zLhM',
     target: '_blank',
