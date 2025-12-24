@@ -21,7 +21,12 @@ const menuItems = ref<MenuItem[]>([
     route: '/roster',
   },
   {
-    label: 'YOUTUBE',
+    label: 'LATEST STATS',
+    url: 'http://www.stiltweb.com/eLeague/fhl/standings.php?div=328',
+    target: '_blank',
+  },
+  {
+    label: 'YOUTUBE REPLAYS',
     url: 'https://youtube.com/playlist?list=PLjYNU_fJDirJumOS8EHFEZ1OExdFrsti-&si=su26ivhJd3Y3zLhM',
     target: '_blank',
   },
@@ -84,9 +89,10 @@ const menuItems = ref<MenuItem[]>([
         v-else
         :href="item.url"
         :target="item.target"
-        class="flex items-center p-2 py-1 text-white"
+        class="flex items-center gap-2 p-2 py-1 text-white"
       >
         {{ item.label }}
+        <i class="pi pi-arrow-up-right text-sm"></i>
       </a>
     </template>
   </Menubar>
