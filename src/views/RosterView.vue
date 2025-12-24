@@ -21,8 +21,30 @@ const toggleRow = (player: Player) => {
     <main class="container mx-auto max-w-4xl space-y-12 px-4 py-12 md:px-8">
       <section>
         <h1 class="mb-8 text-center text-3xl font-bold text-white">ROSTER</h1>
-        <DataTable :value="roster" v-model:expandedRows="expandedRows">
-          <Column expander :pt="{ headerCell: { class: 'w-4' } }">
+        <DataTable
+          :value="roster"
+          v-model:expandedRows="expandedRows"
+          unstyled
+          :pt="{
+            table: { class: 'w-full border-2 border-orange-400' },
+            headerRow: { class: 'border-b-2 border-orange-400 bg-purple-950' },
+            bodyRow: { class: 'border-t border-b border-orange-400' },
+            column: {
+              headerCell: { class: 'p-4 text-left align-top' },
+              bodyCell: { class: 'p-4 text-left align-top' },
+              columnHeaderContent: {
+                class: 'flex gap-2 items-center leading-none',
+              },
+            },
+          }"
+        >
+          <Column
+            expander
+            :pt="{
+              headerCell: { class: 'w-2' },
+              bodyCell: { class: 'w-2' },
+            }"
+          >
             <template #body="{ data }">
               <button
                 v-if="data.bio"
