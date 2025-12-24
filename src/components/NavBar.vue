@@ -46,18 +46,24 @@ const menuItems = ref<MenuItem[]>([
         class: `
           border-0! rounded-none! font-bold
           text-xl! md:text-base!
-          p-4! md:p-0! gap-2!
+          px-4! py-6! md:p-0! gap-2!
           max-md:bg-linear-to-br! max-md:from-purple-950! max-md:to-purple-600!
           md:bg-transparent!
           h-screen! md:h-auto!
         `,
+      },
+      item: {
+        class: 'bg-transparent! ',
+      },
+      itemContent: {
+        class: 'bg-transparent! hover:bg-orange-500! transition! duration-150!',
       },
       menu: {
         class: 'gap-8! font-semibold! max-md:hidden!',
       },
       button: { class: 'hover:bg-transparent!' },
       buttonIcon: {
-        class: 'md:hidden! w-6! h-6! text-xl! text-orange-300',
+        class: 'md:hidden! w-6! h-6! text-xl! text-orange-400',
       },
     }"
   >
