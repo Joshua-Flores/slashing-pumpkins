@@ -17,7 +17,7 @@ const allGames = computed(() => {
   <div class="flex min-h-screen flex-col">
     <main class="container mx-auto max-w-4xl space-y-12 px-4 py-12 md:px-8">
       <section>
-        <h1 class="mb-8 text-center text-3xl font-bold text-white">SCHEDULE</h1>
+        <h1 class="mb-8 text-center text-4xl font-bold text-white">SCHEDULE</h1>
         <div class="space-y-4">
           <GameCard
             v-for="game in allGames"

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router'
+import Button from 'primevue/button'
 import UpcomingGames from '@/components/home/UpcomingGames.vue'
 import NextGameCountdown from '@/components/home/NextGameCountdown.vue'
 </script>
@@ -34,16 +36,24 @@ import NextGameCountdown from '@/components/home/NextGameCountdown.vue'
     </div>
     <main class="container mx-auto max-w-4xl space-y-12 px-4 py-12 md:px-8">
       <section>
-        <h2 class="mb-4 text-center text-3xl font-bold text-white">
+        <h2 class="mb-4 text-center text-4xl font-bold text-white">
           NEXT PUCK DROP
         </h2>
         <NextGameCountdown />
       </section>
       <section>
-        <h2 class="mb-4 text-center text-3xl font-bold text-white">
+        <h2 class="mb-4 text-center text-4xl font-bold text-white">
           UPCOMING GAMES
         </h2>
         <UpcomingGames :limit="3" />
+        <div class="mt-6 text-center">
+          <Button asChild v-slot="slotProps" class="mt-6">
+            <RouterLink to="/schedule" :class="slotProps.class"
+              ><span class="flex items-center gap-2 font-semibold"
+                >VIEW ALL<i class="pi pi-arrow-right" /></span
+            ></RouterLink>
+          </Button>
+        </div>
       </section>
     </main>
   </div>
