@@ -39,4 +39,12 @@ export const roster: Player[] = [
     shoots: 'R',
     showHeadshot: true,
   },
+  {
+    name: 'Josh Flores',
+    number: 48,
+    position: 'LW',
+    shoots: 'R',
+    showHeadshot: true,
+    bio: "In the spring of 2025, one of my kids took up ice skating and I wanted to try that too. Immediately started eyeing some hockey skates because they looked cool. Eventually the bug struck me and I signed up for the Learn to Play Hockey class at Fairfax Ice Arena. The rest is history and I played my first season with the Roughnecks in the fall of 2025. During my first season I learned a lot and even got to be a substitute goalie for one game. That position is no joke so I have decided to stick to being a winger. My main point of focus is scoring a goal in a game. I've come so close many times. One day I will get there.",
+  },
 ]
