@@ -51,3 +51,4 @@ Key Characteristics:
 - Only use tailwind for styling. Avoid manually editing css files unless user gives the okay to do so.
 - Prefer to use primevue components over creating custom components.
 - Never use inline styling.
+- Use `type` instead of `interface` for TypeScript type definitions.

@@ -43,7 +43,7 @@ import NextGameCountdown from '@/components/home/NextGameCountdown.vue'
         <h2 class="mb-4 text-center text-3xl font-bold text-white">
           UPCOMING GAMES
         </h2>
-        <UpcomingGames />
+        <UpcomingGames :limit="3" />
       </section>
     </main>
   </div>
