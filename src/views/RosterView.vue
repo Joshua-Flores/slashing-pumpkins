@@ -20,7 +20,7 @@ const toggleRow = (player: Player) => {
   <div class="flex min-h-screen flex-col">
     <main class="container mx-auto max-w-4xl space-y-12 px-4 py-12 md:px-8">
       <section>
-        <h1 class="mb-8 text-center text-4xl font-bold text-white">ROSTER</h1>
+        <h1 class="mb-8 text-center text-3xl font-bold text-white">ROSTER</h1>
         <div class="clip-corners bg-orange-400 p-0.5">
           <DataTable
             :value="roster"
@@ -75,7 +75,7 @@ const toggleRow = (player: Player) => {
             <Column field="position" header="POS" sortable></Column>
             <Column field="shoots" header="SH"></Column>
             <template #expansion="{ data }">
-              <div v-if="data.bio" class="ml-12 space-y-2 py-2">
+              <div v-if="data.bio" class="space-y-2 md:ml-12">
                 <h2 class="font-bold">PLAYER BIO</h2>
                 <p>
                   {{ data.bio }}

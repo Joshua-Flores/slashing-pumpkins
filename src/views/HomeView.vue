@@ -36,13 +36,13 @@ import NextGameCountdown from '@/components/home/NextGameCountdown.vue'
     </div>
     <main class="container mx-auto max-w-4xl space-y-12 px-4 py-12 md:px-8">
       <section>
-        <h2 class="mb-4 text-center text-4xl font-bold text-white">
+        <h2 class="mb-4 text-center text-3xl font-bold text-white">
           NEXT PUCK DROP
         </h2>
         <NextGameCountdown />
       </section>
       <section>
-        <h2 class="mb-4 text-center text-4xl font-bold text-white">
+        <h2 class="mb-4 text-center text-3xl font-bold text-white">
           UPCOMING GAMES
         </h2>
         <UpcomingGames :limit="3" />

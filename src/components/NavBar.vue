@@ -30,6 +30,11 @@ const menuItems = ref<MenuItem[]>([
     url: 'https://youtube.com/playlist?list=PLjYNU_fJDirJumOS8EHFEZ1OExdFrsti-&si=su26ivhJd3Y3zLhM',
     target: '_blank',
   },
+  {
+    label: 'LOCAL DROP-IN TIMES',
+    url: 'https://www.ice-finder.com/events?zipcode=22030&miles=30&eventType=Stick%20And%20Puck&eventType=Pickup%20Hockey',
+    target: '_blank',
+  },
 ])
 </script>
 
