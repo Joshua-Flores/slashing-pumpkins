@@ -46,7 +46,7 @@ const menuItems = ref<MenuItem[]>([
       root: {
         class: `
           sticky! top-0! z-50! h-18!
-          bg-purple-500/10! backdrop-blur-xl!
+          bg-transparent! bg-linear-to-br! from-purple-700/0! to-purple-800/80! backdrop-blur-xl!
           border-t-0! border-l-0! border-r-0! border-orange-400! px-4!
           flex justify-between!
           md:justify-start!
