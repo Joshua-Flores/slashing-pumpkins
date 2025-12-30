@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import Button from 'primevue/button'
-import UpcomingGames from '@/components/home/UpcomingGames.vue'
-import NextGameCountdown from '@/components/home/NextGameCountdown.vue'
+import UpcomingGames from '@/components/UpcomingGames.vue'
+import NextGameCountdown from '@/components/NextGameCountdown.vue'
 </script>
 
 <template>

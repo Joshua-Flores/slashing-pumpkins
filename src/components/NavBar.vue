@@ -47,7 +47,7 @@ const menuItems = ref<MenuItem[]>([
         class: `
           sticky! top-0! z-50! h-18!
           bg-purple-500/10! backdrop-blur-xl!
-          border-none! rounded-none! px-4!
+          border-t-0! border-l-0! border-r-0! border-orange-400! px-4!
           flex justify-between!
           md:justify-start!
         `,

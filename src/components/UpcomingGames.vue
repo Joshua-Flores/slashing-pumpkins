@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import GameCard from '../GameCard.vue'
+import GameCard from './GameCard.vue'
 import { games } from '@/data/games'
 
 // Define the type for clarity
