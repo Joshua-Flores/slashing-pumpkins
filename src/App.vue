@@ -7,7 +7,9 @@ const currentYear = computed(() => new Date().getFullYear())
 </script>
 
 <template>
-  <div class="flex min-h-screen flex-col bg-purple-950">
+  <div
+    class="bg-center-top bg-top-center flex min-h-screen flex-col bg-purple-950 bg-[url(/background.svg)] bg-cover bg-fixed bg-bottom bg-no-repeat"
+  >
     <NavBar />
 
     <RouterView v-slot="{ Component }">
