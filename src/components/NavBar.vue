@@ -41,7 +41,7 @@ const menuItems = ref<MenuItem[]>([
 <template>
   <Menubar
     :model="menuItems"
-    breakpoint="768px"
+    breakpoint="900px"
     :pt="{
       root: {
         class: `
@@ -49,7 +49,7 @@ const menuItems = ref<MenuItem[]>([
           bg-transparent! bg-linear-to-br! from-purple-700/0! to-purple-800/80! backdrop-blur-xl!
           border-t-0! border-l-0! border-r-0! border-orange-400! px-4!
           flex justify-between!
-          md:justify-start!
+          lg:justify-start!
         `,
       },
       rootList: {
@@ -73,7 +73,7 @@ const menuItems = ref<MenuItem[]>([
       },
       button: { class: 'hover:bg-transparent!' },
       buttonIcon: {
-        class: 'md:hidden! w-6! h-6! text-xl! text-orange-400',
+        class: 'lg:hidden! w-6! h-6! text-xl! text-orange-400',
       },
     }"
   >
