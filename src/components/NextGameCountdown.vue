@@ -12,8 +12,8 @@ const nextGame = computed((): Game | undefined => {
     .sort((a, b) => a.date.getTime() - b.date.getTime())[0]
 })
 
-// Defining a specific interface for the countdown object
-interface TimeRemaining {
+// Defining a specific type for the countdown object
+type TimeRemaining = {
   days: number
   hours: number
   minutes: number
