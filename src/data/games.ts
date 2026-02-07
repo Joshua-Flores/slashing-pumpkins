@@ -48,7 +48,14 @@ export const games: Game[] = [
       opponent: 5,
     },
   },
-  { date: new Date('2026-01-30T23:55:00-05:00'), opponent: 'Red Wings' },
+  {
+    date: new Date('2026-01-30T23:55:00-05:00'),
+    opponent: 'Red Wings',
+    score: {
+      slashingPumpkins: 7,
+      opponent: 3,
+    },
+  },
   { date: new Date('2026-02-14T22:40:00-05:00'), opponent: 'Roccos' },
   { date: new Date('2026-02-22T16:55:00-05:00'), opponent: 'Blue Dogs' },
   { date: new Date('2026-03-01T19:45:00-05:00'), opponent: 'Hershey Beers' },
