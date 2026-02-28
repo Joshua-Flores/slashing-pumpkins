@@ -3,12 +3,25 @@ import { computed } from 'vue'
 import GameCard from '@/components/GameCard.vue'
 import { games, type Game } from '@/data/games'
 
+const getDate = (game: Game) => new Date(game.time)
+const getOpponent = (game: Game) =>
+  game.awayTeam === 'Slashing Pumpkins' ? game.homeTeam : game.awayTeam
+const getScore = (game: Game) => {
+  if (game.awayTeamScore === undefined || game.homeTeamScore === undefined)
+    return undefined
+  const isAway = game.awayTeam === 'Slashing Pumpkins'
+  return {
+    slashingPumpkins: isAway ? game.awayTeamScore : game.homeTeamScore,
+    opponent: isAway ? game.homeTeamScore : game.awayTeamScore,
+  }
+}
+
 /**
  * Show all games sorted by date in ascending order
  */
 const allGames = computed(() => {
   return [...games].sort(
-    (a: Game, b: Game) => a.date.getTime() - b.date.getTime(),
+    (a: Game, b: Game) => getDate(a).getTime() - getDate(b).getTime(),
   )
 })
 </script>
@@ -21,10 +34,10 @@ const allGames = computed(() => {
         <div class="space-y-4">
           <GameCard
             v-for="game in allGames"
-            :key="game.date.toISOString() + game.opponent"
-            :opponent="game.opponent"
-            :game-date="game.date"
-            :score="game.score"
+            :key="getDate(game).toISOString() + getOpponent(game)"
+            :opponent="getOpponent(game)"
+            :game-date="getDate(game)"
+            :score="getScore(game)"
           />
 
           <div v-if="allGames.length === 0" class="text-center text-white">

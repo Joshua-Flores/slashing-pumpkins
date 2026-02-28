@@ -8,8 +8,8 @@ let timer: ReturnType<typeof setInterval>
 // Explicitly typing the return as Game | undefined
 const nextGame = computed((): Game | undefined => {
   return games
-    .filter((game: Game) => game.date > now.value)
-    .sort((a, b) => a.date.getTime() - b.date.getTime())[0]
+    .filter((game: Game) => new Date(game.time) > now.value)
+    .sort((a, b) => new Date(a.time).getTime() - new Date(b.time).getTime())[0]
 })
 
 // Defining a specific type for the countdown object
@@ -23,7 +23,7 @@ type TimeRemaining = {
 const timeLeft = computed((): TimeRemaining | null => {
   if (!nextGame.value) return null
 
-  const diff = nextGame.value.date.getTime() - now.value.getTime()
+  const diff = new Date(nextGame.value.time).getTime() - now.value.getTime()
 
   if (diff <= 0) return null
 

@@ -1,107 +1,150 @@
-import { easternDateTimeToDate } from './utils'
+// All times are Eastern Time (America/New_York)
+// EST (UTC-5) Nov–Mar 8; EDT (UTC-4) Mar 8–Nov
+// Year inferred from schedule: Dec 2025 – Jun 2026
 
-export type Game = {
-  date: Date
-  opponent: string
-  score?: {
-    slashingPumpkins: number
-    opponent: number
-  }
+type Game = {
+  awayTeam: string
+  homeTeam: string
+  time: string // ISO string (EST)
+  awayTeamScore?: number
+  homeTeamScore?: number
 }
 
-type GameInput = Omit<Game, 'date'> & {
-  dateEt: string
-  timeEt: string
-}
+export const games: Game[] = [
+  // December 2025
+  {
+    awayTeam: 'Slashing Pumpkins',
+    homeTeam: 'Red Wings',
+    time: '2025-12-07T21:45:00-05:00',
+    awayTeamScore: 7,
+    homeTeamScore: 3,
+  },
+  {
+    awayTeam: 'Roccos',
+    homeTeam: 'Slashing Pumpkins',
+    time: '2025-12-14T23:00:00-05:00',
+    awayTeamScore: 2,
+    homeTeamScore: 2,
+  },
+  {
+    awayTeam: 'Slashing Pumpkins',
+    homeTeam: 'Hershey Beers',
+    time: '2025-12-21T22:40:00-05:00',
+    awayTeamScore: 2,
+    homeTeamScore: 1,
+  },
 
-const gameInputs: GameInput[] = [
+  // January 2026
   {
-    dateEt: '2025-12-07',
-    timeEt: '9:45pm',
-    opponent: 'Red Wings',
-    score: {
-      slashingPumpkins: 7,
-      opponent: 3,
-    },
+    awayTeam: 'Blue Dogs',
+    homeTeam: 'Slashing Pumpkins',
+    time: '2026-01-04T20:45:00-05:00',
+    awayTeamScore: 2,
+    homeTeamScore: 5,
   },
   {
-    dateEt: '2025-12-14',
-    timeEt: '11:00pm',
-    opponent: 'Roccos',
-    score: {
-      slashingPumpkins: 2,
-      opponent: 2,
-    },
+    awayTeam: 'Slashing Pumpkins',
+    homeTeam: 'Megalosaurus',
+    time: '2026-01-11T20:55:00-05:00',
+    awayTeamScore: 1,
+    homeTeamScore: 5,
   },
   {
-    dateEt: '2025-12-21',
-    timeEt: '10:40pm',
-    opponent: 'Hershey Beers',
-    score: {
-      slashingPumpkins: 2,
-      opponent: 1,
-    },
+    awayTeam: 'Thunder',
+    homeTeam: 'Slashing Pumpkins',
+    time: '2026-01-18T16:55:00-05:00',
+    awayTeamScore: 0,
+    homeTeamScore: 0,
   },
   {
-    dateEt: '2026-01-04',
-    timeEt: '8:45pm',
-    opponent: 'Blue Dogs',
-    score: {
-      slashingPumpkins: 4,
-      opponent: 2,
-    },
+    awayTeam: 'Red Wings',
+    homeTeam: 'Slashing Pumpkins',
+    time: '2026-01-30T23:55:00-05:00',
+    awayTeamScore: 3,
+    homeTeamScore: 7,
+  },
+
+  // February 2026
+  {
+    awayTeam: 'Slashing Pumpkins',
+    homeTeam: 'Roccos',
+    time: '2026-02-14T22:40:00-05:00',
+    awayTeamScore: 7,
+    homeTeamScore: 1,
   },
   {
-    dateEt: '2026-01-11',
-    timeEt: '8:55pm',
-    opponent: 'Megalosaurus',
-    score: {
-      slashingPumpkins: 1,
-      opponent: 5,
-    },
+    awayTeam: 'Slashing Pumpkins',
+    homeTeam: 'Blue Dogs',
+    time: '2026-02-22T16:55:00-05:00',
+    awayTeamScore: 4,
+    homeTeamScore: 3,
+  },
+
+  // March 2026 (future – no scores)
+  {
+    awayTeam: 'Hershey Beers',
+    homeTeam: 'Slashing Pumpkins',
+    time: '2026-03-01T19:45:00-05:00',
   },
   {
-    dateEt: '2026-01-30',
-    timeEt: '11:55pm',
-    opponent: 'Red Wings',
-    score: {
-      slashingPumpkins: 7,
-      opponent: 3,
-    },
+    awayTeam: 'Slashing Pumpkins',
+    homeTeam: 'Thunder',
+    time: '2026-03-15T21:30:00-04:00',
   },
   {
-    dateEt: '2026-02-14',
-    timeEt: '10:40pm',
-    opponent: 'Roccos',
-    score: {
-      slashingPumpkins: 7,
-      opponent: 1,
-    },
+    awayTeam: 'Blue Dogs',
+    homeTeam: 'Slashing Pumpkins',
+    time: '2026-03-28T23:55:00-04:00',
+  },
+
+  // April 2026
+  {
+    awayTeam: 'Slashing Pumpkins',
+    homeTeam: 'Megalosaurus',
+    time: '2026-04-03T23:30:00-04:00',
   },
   {
-    dateEt: '2026-02-22',
-    timeEt: '4:55pm',
-    opponent: 'Blue Dogs',
-    score: {
-      slashingPumpkins: 4,
-      opponent: 3,
-    },
+    awayTeam: 'Slashing Pumpkins',
+    homeTeam: 'Red Wings',
+    time: '2026-04-11T22:10:00-04:00',
   },
-  { dateEt: '2026-03-01', timeEt: '7:45pm', opponent: 'Hershey Beers' },
-  { dateEt: '2026-03-15', timeEt: '9:30pm', opponent: 'Thunder' },
-  { dateEt: '2026-03-28', timeEt: '11:55pm', opponent: 'Blue Dogs' },
-  { dateEt: '2026-04-03', timeEt: '11:30pm', opponent: 'Megalosaurus' },
-  { dateEt: '2026-04-11', timeEt: '10:10pm', opponent: 'Red Wings' },
-  { dateEt: '2026-04-12', timeEt: '10:50pm', opponent: 'Slashing Pumpkins' },
-  { dateEt: '2026-04-19', timeEt: '9:40pm', opponent: 'Roccos' },
-  { dateEt: '2026-04-25', timeEt: '11:30pm', opponent: 'Hershey Beers' },
-  { dateEt: '2026-05-10', timeEt: '8:10pm', opponent: 'Thunder' },
-  { dateEt: '2026-05-24', timeEt: '8:10pm', opponent: 'Red Wings' },
-  { dateEt: '2026-05-31', timeEt: '10:50pm', opponent: 'Roccos' },
-  { dateEt: '2026-06-07', timeEt: '9:30am', opponent: 'Megalosaurus' },
+  {
+    awayTeam: 'Thunder',
+    homeTeam: 'Slashing Pumpkins',
+    time: '2026-04-12T22:50:00-04:00',
+  },
+  {
+    awayTeam: 'Roccos',
+    homeTeam: 'Slashing Pumpkins',
+    time: '2026-04-19T21:40:00-04:00',
+  },
+  {
+    awayTeam: 'Slashing Pumpkins',
+    homeTeam: 'Hershey Beers',
+    time: '2026-04-25T23:30:00-04:00',
+  },
+
+  // May 2026
+  {
+    awayTeam: 'Thunder',
+    homeTeam: 'Slashing Pumpkins',
+    time: '2026-05-10T20:10:00-04:00',
+  },
+  {
+    awayTeam: 'Red Wings',
+    homeTeam: 'Slashing Pumpkins',
+    time: '2026-05-24T20:10:00-04:00',
+  },
+  {
+    awayTeam: 'Slashing Pumpkins',
+    homeTeam: 'Roccos',
+    time: '2026-05-31T22:50:00-04:00',
+  },
+
+  // June 2026
+  {
+    awayTeam: 'Megalosaurus',
+    homeTeam: 'Slashing Pumpkins',
+    time: '2026-06-07T09:30:00-04:00',
+  },
 ]
-
-export const games: Game[] = gameInputs.map(({ dateEt, timeEt, ...rest }) => ({
-  ...rest,
-  date: easternDateTimeToDate(dateEt, timeEt),
-}))

@@ -10,6 +10,10 @@ type Props = {
 
 const props = defineProps<Props>()
 
+const getDate = (game: Game) => new Date(game.time)
+const getOpponent = (game: Game) =>
+  game.awayTeam === 'Slashing Pumpkins' ? game.homeTeam : game.awayTeam
+
 /**
  * We use computed here to:
  * 1. Filter out any games that are more than 2 hours past their scheduled time.
@@ -21,8 +25,8 @@ const upcomingGames = computed(() => {
   const cutoffTime = new Date(Date.now() - twoHoursInMs)
 
   const filteredGames = games
-    .filter((game: Game) => game.date > cutoffTime) // Only keep games within 2 hours
-    .sort((a: Game, b: Game) => a.date.getTime() - b.date.getTime()) // Ascending order
+    .filter((game: Game) => getDate(game) > cutoffTime) // Only keep games within 2 hours
+    .sort((a: Game, b: Game) => getDate(a).getTime() - getDate(b).getTime()) // Ascending order
 
   // If limit is provided, slice the array, otherwise return all
   return props.limit ? filteredGames.slice(0, props.limit) : filteredGames
@@ -33,9 +37,9 @@ const upcomingGames = computed(() => {
   <div class="space-y-4">
     <GameCard
       v-for="game in upcomingGames"
-      :key="game.date.toISOString() + game.opponent"
-      :opponent="game.opponent"
-      :game-date="game.date"
+      :key="getDate(game).toISOString() + getOpponent(game)"
+      :opponent="getOpponent(game)"
+      :game-date="getDate(game)"
     />
 
     <div v-if="upcomingGames.length === 0" class="text-center text-white">
