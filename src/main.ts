@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import PrimeVue from 'primevue/config'
-import Nora from '@primevue/themes/nora'
+import Nora from '@primeuix/themes/nora'
 import Ripple from 'primevue/ripple'
 import App from './App.vue'
 import router from './router'

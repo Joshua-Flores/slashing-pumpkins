@@ -47,7 +47,7 @@ import NextGameCountdown from '@/components/NextGameCountdown.vue'
         </h2>
         <UpcomingGames :limit="3" />
         <div class="mt-6 text-center">
-          <Button asChild v-slot="slotProps" class="mt-6">
+          <Button as-child v-slot="slotProps" class="mt-6">
             <RouterLink to="/schedule" :class="slotProps.class"
               ><span class="flex items-center gap-2 font-bold"
                 >VIEW ALL<i class="pi pi-arrow-right" /></span

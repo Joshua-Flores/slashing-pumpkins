@@ -24,7 +24,7 @@ const toggleRow = (player: Player) => {
         <div class="clip-corners bg-orange-400 p-0.5">
           <DataTable
             :value="roster"
-            v-model:expandedRows="expandedRows"
+            v-model:expanded-rows="expandedRows"
             unstyled
             :pt="{
               table: { class: 'w-full clip-corners text-sm md:text-base' },
