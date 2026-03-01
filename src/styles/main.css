@@ -18,6 +18,19 @@
     padding: 0;
     min-height: 100%;
   }
+
+  .p-togglebutton {
+    background-color: #00000040 !important;
+    border-width: 0 !important;
+    color: white !important;
+  }
+
+  .p-togglebutton-checked {
+    .p-togglebutton-content {
+      background-color: theme(--color-orange-500) !important;
+      color: black !important;
+    }
+  }
 }
 
 @font-face {

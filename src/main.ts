@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import PrimeVue from 'primevue/config'
-import Nora from '@primeuix/themes/nora'
-import Ripple from 'primevue/ripple'
+import Aura from '@primeuix/themes/aura'
+import { updateSurfacePalette } from '@primeuix/themes'
 import App from './App.vue'
 import router from './router'
 import '@fontsource/inter/400.css'
@@ -18,14 +18,14 @@ const app = createApp(App)
 app.use(router)
 app.use(PrimeVue, {
   theme: {
-    preset: Nora,
+    preset: Aura,
     options: {
       prefix: 'p',
       darkModeSelector: '.dark',
       cssLayer: false,
     },
   },
-  ripple: true,
+
   pt: {
     global: {
       css: `
@@ -46,6 +46,20 @@ app.use(PrimeVue, {
     },
   },
 })
-app.directive('ripple', Ripple)
+
+updateSurfacePalette({
+  0: '#ffffff',
+  50: '#faf5ff',
+  100: '#f3e8ff',
+  200: '#e9d5ff',
+  300: '#d8b4fe',
+  400: '#c084fc',
+  500: '#a855f7',
+  600: '#9333ea',
+  700: '#7e22ce',
+  800: '#6b21a8',
+  900: '#581c87',
+  950: '#3b0764',
+})
 
 app.mount('#app')
