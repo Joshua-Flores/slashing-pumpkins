@@ -79,8 +79,8 @@ const filteredGames = computed(() => {
               headerRow: { class: 'border-b border-white/30' },
               bodyRow: { class: 'border-b border-white/10' },
               column: {
-                headerCell: { class: 'py-4' },
-                bodyCell: { class: 'py-4' },
+                headerCell: { class: 'pr-4 py-3' },
+                bodyCell: { class: 'pr-4 py-3' },
               },
             }"
           >
