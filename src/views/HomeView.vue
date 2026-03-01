@@ -58,7 +58,9 @@ const teamPhotos = [
         <h2 class="mb-4 text-center text-3xl font-bold text-white">
           NEXT PUCK DROP
         </h2>
-        <NextGameCountdown />
+        <div class="scoreboard-ring">
+          <NextGameCountdown />
+        </div>
       </section>
       <section>
         <h2 class="mb-4 text-center text-3xl font-bold text-white">
@@ -134,12 +136,49 @@ const teamPhotos = [
   border: 2px solid var(--color-orange-400);
 }
 
+.scoreboard-ring {
+  position: relative;
+  margin: 0 auto;
+  width: fit-content;
+  padding: 3px;
+  border-radius: 0.375rem;
+  overflow: hidden;
+}
+
+.scoreboard-ring::before {
+  content: '';
+  position: absolute;
+  inset: -140%;
+  background: conic-gradient(
+    from 0deg,
+    var(--color-purple-700) 0deg,
+    var(--color-purple-700) 300deg,
+    var(--color-orange-500) 338deg,
+    var(--color-purple-700) 360deg
+  );
+  animation: scoreboard-ring-spin 2.8s linear infinite;
+}
+
+.scoreboard-ring > * {
+  position: relative;
+  z-index: 1;
+}
+
 @keyframes team-marquee-scroll {
   from {
     transform: translateX(0);
   }
   to {
     transform: translateX(calc(-50% - 0.5rem));
+  }
+}
+
+@keyframes scoreboard-ring-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 </style>
