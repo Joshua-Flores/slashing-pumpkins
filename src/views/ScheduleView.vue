@@ -74,7 +74,7 @@ const filteredGames = computed(() => {
             unstyled
             :pt="{
               table: {
-                class: 'w-full text-left text-sm text-white md:text-base',
+                class: 'w-full text-left text-xs text-white md:text-base',
               },
               headerRow: { class: 'border-b border-white/30' },
               bodyRow: { class: 'border-b border-white/10' },
