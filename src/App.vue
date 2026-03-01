@@ -8,7 +8,7 @@ const currentYear = computed(() => new Date().getFullYear())
 
 <template>
   <div
-    class="bg-center-top bg-top-center flex min-h-screen flex-col bg-purple-950"
+    class="bg-center-top bg-top-center bg-purple-975 flex min-h-screen flex-col"
   >
     <NavBar />
 

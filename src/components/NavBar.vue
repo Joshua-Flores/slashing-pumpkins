@@ -46,7 +46,7 @@ const menuItems = ref<MenuItem[]>([
       root: {
         class: `
           sticky! top-0! z-50! h-18!
-          bg-purple-950/50! backdrop-blur-xl!
+          bg-purple-975/50! backdrop-blur-xl!
           border-t-0! border-l-0! border-r-0! rounded-none! border-orange-400! px-4!
           flex justify-between!
           lg:justify-start!
@@ -56,10 +56,10 @@ const menuItems = ref<MenuItem[]>([
         class: `
           border-0! rounded-none! font-bold
           text-xl! md:text-base!
-          px-4! py-6! md:p-0! gap-2!
-          max-md:bg-linear-to-br! max-md:from-purple-950! max-md:to-purple-800!
-          md:bg-transparent!
-          h-screen! md:h-auto!
+          px-4! py-6! min-[900px]:p-0! gap-2!
+          max-[899px]:bg-linear-to-br! max-[899px]:from-purple-975! max-[899px]:to-purple-950!
+          min-[900px]:bg-transparent!
+          h-screen! min-[900px]:h-auto!
         `,
       },
       item: {
@@ -69,7 +69,7 @@ const menuItems = ref<MenuItem[]>([
         class: 'bg-transparent! hover:bg-orange-400! transition! duration-150!',
       },
       menu: {
-        class: 'gap-8! font-semibold! max-md:hidden!',
+        class: 'gap-8! font-semibold! max-[899px]:hidden!',
       },
       button: { class: 'hover:bg-transparent!' },
       buttonIcon: {
@@ -86,7 +86,7 @@ const menuItems = ref<MenuItem[]>([
       <a
         v-if="item.route"
         @click.prevent="handleNavigation(item.route)"
-        class="flex cursor-pointer items-center p-2 py-1 text-white hover:text-purple-900"
+        class="hover:text-purple-975 flex cursor-pointer items-center p-2 py-1 text-white"
       >
         {{ item.label }}
       </a>
@@ -94,7 +94,7 @@ const menuItems = ref<MenuItem[]>([
         v-else
         :href="item.url"
         :target="item.target"
-        class="flex items-center gap-2 p-2 py-1 text-white hover:text-purple-900"
+        class="hover:text-purple-975 flex items-center gap-2 p-2 py-1 text-white"
       >
         {{ item.label }}
         <i class="pi pi-arrow-up-right text-sm"></i>

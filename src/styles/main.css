@@ -1,5 +1,10 @@
 @import 'tailwindcss';
 
+@theme {
+  --color-purple-975: oklch(24% 0.13 302.717);
+  --color-purple-1000: oklch(20% 0.11 302.717);
+}
+
 @layer base {
   * {
     font-family: 'Inter', sans-serif;
@@ -20,7 +25,7 @@
   }
 
   .p-togglebutton {
-    background-color: #00000040 !important;
+    background-color: var(--color-purple-1000) !important;
     border-width: 0 !important;
     color: white !important;
     font-weight: 700 !important;
