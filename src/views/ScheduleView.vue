@@ -2,7 +2,11 @@
 import { computed } from 'vue'
 import GameCard from '@/components/GameCard.vue'
 import { games, type Game } from '@/data/games'
+import { ref } from 'vue'
+import SelectButton from 'primevue/selectbutton'
 
+const value = ref('Upcoming')
+const options = ref(['Upcoming', 'Past'])
 const getDate = (game: Game) => new Date(game.time)
 const getOpponent = (game: Game) =>
   game.awayTeam === 'Slashing Pumpkins' ? game.homeTeam : game.awayTeam
@@ -31,6 +35,7 @@ const allGames = computed(() => {
     <main class="container mx-auto max-w-4xl space-y-12 px-4 py-12 md:px-8">
       <section>
         <h1 class="mb-8 text-center text-3xl font-bold text-white">SCHEDULE</h1>
+        <SelectButton v-model="value" :options="options" fluid class="mb-4" />
         <div class="space-y-4">
           <GameCard
             v-for="game in allGames"

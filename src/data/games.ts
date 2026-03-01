@@ -2,7 +2,7 @@
 // EST (UTC-5) Nov–Mar 8; EDT (UTC-4) Mar 8–Nov
 // Year inferred from schedule: Dec 2025 – Jun 2026
 
-type Game = {
+export type Game = {
   awayTeam: string
   homeTeam: string
   time: string // ISO string (EST)
