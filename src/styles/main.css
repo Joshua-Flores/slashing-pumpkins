@@ -23,12 +23,13 @@
     background-color: #00000040 !important;
     border-width: 0 !important;
     color: white !important;
+    font-weight: 700 !important;
   }
 
   .p-togglebutton-checked {
     .p-togglebutton-content {
       background-color: theme(--color-orange-500) !important;
-      color: black !important;
+      color: theme(--color-purple-950);
     }
   }
 }

@@ -57,7 +57,7 @@ const menuItems = ref<MenuItem[]>([
           border-0! rounded-none! font-bold
           text-xl! md:text-base!
           px-4! py-6! md:p-0! gap-2!
-          max-md:bg-linear-to-br! max-md:from-purple-950! max-md:to-purple-600!
+          max-md:bg-linear-to-br! max-md:from-purple-950! max-md:to-purple-800!
           md:bg-transparent!
           h-screen! md:h-auto!
         `,
@@ -66,7 +66,7 @@ const menuItems = ref<MenuItem[]>([
         class: 'bg-transparent! ',
       },
       itemContent: {
-        class: 'bg-transparent! hover:bg-orange-500! transition! duration-150!',
+        class: 'bg-transparent! hover:bg-orange-400! transition! duration-150!',
       },
       menu: {
         class: 'gap-8! font-semibold! max-md:hidden!',
@@ -86,7 +86,7 @@ const menuItems = ref<MenuItem[]>([
       <a
         v-if="item.route"
         @click.prevent="handleNavigation(item.route)"
-        class="flex cursor-pointer items-center p-2 py-1 text-white"
+        class="flex cursor-pointer items-center p-2 py-1 text-white hover:text-purple-900"
       >
         {{ item.label }}
       </a>
@@ -94,7 +94,7 @@ const menuItems = ref<MenuItem[]>([
         v-else
         :href="item.url"
         :target="item.target"
-        class="flex items-center gap-2 p-2 py-1 text-white"
+        class="flex items-center gap-2 p-2 py-1 text-white hover:text-purple-900"
       >
         {{ item.label }}
         <i class="pi pi-arrow-up-right text-sm"></i>
