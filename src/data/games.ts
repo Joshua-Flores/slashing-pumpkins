@@ -73,11 +73,13 @@ export const games: Game[] = [
     homeTeamScore: 3,
   },
 
-  // March 2026 (future – no scores)
+  // March 2026
   {
     awayTeam: 'Hershey Beers',
     homeTeam: 'Slashing Pumpkins',
     time: '2026-03-01T19:45:00-05:00',
+    awayTeamScore: 1,
+    homeTeamScore: 7,
   },
   {
     awayTeam: 'Slashing Pumpkins',
