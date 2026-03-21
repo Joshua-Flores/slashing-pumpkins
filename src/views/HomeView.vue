@@ -26,7 +26,7 @@ import TeamPhotoMarquee from '@/components/TeamPhotoMarquee.vue'
         src="/logo.svg"
         alt="slashing pumpkin team logo"
         loading="eager"
-        class="absolute top-2/5 left-1/2 h-3/5 -translate-x-2/5 -translate-y-1/2 drop-shadow-sm drop-shadow-orange-300 filter"
+        class="absolute top-1/2 left-1/2 h-4/5 -translate-x-2/5 -translate-y-1/2 drop-shadow-sm drop-shadow-orange-300 filter"
       />
     </header>
     <!-- Stripes -->

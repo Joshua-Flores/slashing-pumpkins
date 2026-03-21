@@ -77,12 +77,12 @@ onMounted(() => {
 
     <div
       ref="recordSection"
-      class="flex divide-x divide-orange-400/30 rounded-md bg-gray-900"
+      class="flex divide-x divide-orange-400/30 rounded-md border border-orange-400 bg-gray-900"
     >
       <div
         class="flex flex-1 flex-col items-center justify-center gap-2 px-2 py-6"
       >
-        <span class="text-6xl font-extrabold text-orange-400 md:text-8xl">{{
+        <span class="text-6xl font-extrabold text-orange-400 md:text-7xl">{{
           displayWins
         }}</span>
         <span class="text-sm font-bold tracking-[0.25em] text-gray-500"
@@ -92,7 +92,7 @@ onMounted(() => {
       <div
         class="flex flex-1 flex-col items-center justify-center gap-2 px-2 py-6"
       >
-        <span class="text-6xl font-extrabold text-orange-400 md:text-8xl">{{
+        <span class="text-6xl font-extrabold text-orange-400 md:text-7xl">{{
           displayLosses
         }}</span>
         <span class="text-sm font-bold tracking-[0.25em] text-gray-500"
@@ -102,7 +102,7 @@ onMounted(() => {
       <div
         class="flex flex-1 flex-col items-center justify-center gap-2 px-2 py-6"
       >
-        <span class="text-6xl font-extrabold text-orange-400 md:text-8xl">{{
+        <span class="text-6xl font-extrabold text-orange-400 md:text-7xl">{{
           displayTies
         }}</span>
         <span class="text-sm font-bold tracking-[0.25em] text-gray-500"
