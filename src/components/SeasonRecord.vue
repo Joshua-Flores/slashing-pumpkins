@@ -22,48 +22,35 @@ const record = computed(() => {
   return { wins, losses, ties }
 })
 
-const displayWins = ref(0)
-const displayLosses = ref(0)
-const displayTies = ref(0)
+const totalGames = computed(() => games.length)
+const gamesPlayed = computed(
+  () =>
+    games.filter(
+      (g) => g.awayTeamScore !== undefined && g.homeTeamScore !== undefined,
+    ).length,
+)
+const progressPercent = computed(
+  () => (gamesPlayed.value / totalGames.value) * 100,
+)
 
-function countUp(
-  target: number,
-  setter: (v: number) => void,
-  duration: number,
-): Promise<void> {
-  return new Promise((resolve) => {
-    if (target === 0) {
-      resolve()
-      return
-    }
-    const start = performance.now()
-    function step(now: number) {
-      const progress = Math.min((now - start) / duration, 1)
-      setter(Math.round(progress * target))
-      if (progress < 1) requestAnimationFrame(step)
-      else resolve()
-    }
-    requestAnimationFrame(step)
-  })
-}
-
+const started = ref(false)
 const recordSection = ref<HTMLElement | null>(null)
+const allDigits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+function toDigitArray(n: number): number[] {
+  return String(n).split('').map(Number)
+}
 
 onMounted(() => {
   const observer = new IntersectionObserver(
-    async ([entry]: IntersectionObserverEntry[]) => {
+    ([entry]: IntersectionObserverEntry[]) => {
       if (!entry?.isIntersecting) return
       observer.disconnect()
-      const DURATION = 1000
-      await countUp(record.value.wins, (v) => (displayWins.value = v), DURATION)
-      await countUp(
-        record.value.losses,
-        (v) => (displayLosses.value = v),
-        DURATION,
-      )
-      await countUp(record.value.ties, (v) => (displayTies.value = v), DURATION)
+      setTimeout(() => {
+        started.value = true
+      }, 300)
     },
-    { rootMargin: '-25% 0px -25% 0px', threshold: 0 },
+    { rootMargin: '0px 0px -30% 0px', threshold: 0 },
   )
   if (recordSection.value) observer.observe(recordSection.value)
 })
@@ -72,42 +59,66 @@ onMounted(() => {
 <template>
   <section>
     <h2 class="mb-4 text-center text-3xl font-bold text-white">
-      CURRENT SEASON RECORD
+      CURRENT SEASON
     </h2>
 
-    <div
-      ref="recordSection"
-      class="flex divide-x divide-orange-400/30 rounded-md border border-orange-400 bg-gray-900"
-    >
+    <div class="rounded-md border border-orange-400 bg-gray-900">
       <div
-        class="flex flex-1 flex-col items-center justify-center gap-2 px-2 py-6"
+        ref="recordSection"
+        class="flex divide-x divide-orange-400/40 border-b border-orange-400/40"
       >
-        <span class="text-6xl font-extrabold text-orange-400 md:text-7xl">{{
-          displayWins
-        }}</span>
-        <span class="text-sm font-bold tracking-[0.25em] text-gray-500"
-          >WINS</span
+        <div
+          v-for="(stat, idx) in [
+            { value: record.wins, label: 'WINS' },
+            { value: record.losses, label: 'LOSSES' },
+            { value: record.ties, label: 'TIES' },
+          ]"
+          :key="stat.label"
+          class="flex flex-1 flex-col items-center justify-center px-2 py-6"
         >
+          <div class="flex">
+            <div
+              v-for="(digit, i) in toDigitArray(stat.value)"
+              :key="stat.label + i"
+              class="digit-container"
+            >
+              <div
+                class="digit-wheel"
+                :style="{
+                  transform: started
+                    ? `translateY(-${digit * 10}%)`
+                    : 'translateY(0)',
+                  transitionDelay: `${idx * 200 + i * 80}ms`,
+                }"
+              >
+                <span
+                  v-for="d in allDigits"
+                  :key="d"
+                  class="digit-cell text-6xl font-extrabold text-orange-400"
+                  >{{ d }}</span
+                >
+              </div>
+            </div>
+          </div>
+          <span
+            class="mt-2 text-sm font-bold tracking-widest text-gray-100 uppercase"
+            >{{ stat.label }}</span
+          >
+        </div>
       </div>
-      <div
-        class="flex flex-1 flex-col items-center justify-center gap-2 px-2 py-6"
-      >
-        <span class="text-6xl font-extrabold text-orange-400 md:text-7xl">{{
-          displayLosses
-        }}</span>
-        <span class="text-sm font-bold tracking-[0.25em] text-gray-500"
-          >LOSSES</span
-        >
-      </div>
-      <div
-        class="flex flex-1 flex-col items-center justify-center gap-2 px-2 py-6"
-      >
-        <span class="text-6xl font-extrabold text-orange-400 md:text-7xl">{{
-          displayTies
-        }}</span>
-        <span class="text-sm font-bold tracking-[0.25em] text-gray-500"
-          >TIES</span
-        >
+      <div class="px-4 py-4">
+        <div class="mb-3 flex justify-between">
+          <span class="font-bold italic">SEASON PROGRESS</span>
+          <span class="text-gray-400"
+            >{{ gamesPlayed }} / {{ totalGames }} Games Played</span
+          >
+        </div>
+        <div class="h-3 w-full overflow-hidden rounded-full bg-gray-700">
+          <div
+            class="h-full rounded-full bg-linear-to-r from-orange-500 to-orange-300 transition-all duration-1000 ease-out"
+            :style="{ width: started ? `${progressPercent}%` : '0%' }"
+          />
+        </div>
       </div>
     </div>
     <div class="mt-6 text-center">
@@ -120,3 +131,24 @@ onMounted(() => {
     </div>
   </section>
 </template>
+
+<style scoped>
+.digit-container {
+  overflow: hidden;
+  height: 3.75rem;
+}
+
+.digit-wheel {
+  display: flex;
+  flex-direction: column;
+  transition: transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.digit-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.75rem;
+  line-height: 1;
+}
+</style>

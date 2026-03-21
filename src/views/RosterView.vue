@@ -21,22 +21,20 @@ const toggleRow = (player: Player) => {
     <main class="container mx-auto max-w-4xl space-y-12 px-4 py-12 md:px-8">
       <section>
         <h1 class="mb-8 text-center text-3xl font-bold text-white">ROSTER</h1>
-        <div class="clip-corners bg-orange-400 p-0.5">
+        <div>
           <DataTable
             :value="roster"
             v-model:expanded-rows="expandedRows"
             unstyled
             :pt="{
-              table: { class: 'w-full clip-corners text-sm md:text-base' },
-              headerRow: {
-                class: 'border-b-2 border-orange-400 bg-purple-900',
+              table: {
+                class: 'w-full text-left text-xs text-white md:text-base',
               },
-              bodyRow: { class: 'border-t border-b border-orange-400' },
+              headerRow: { class: 'border-b border-white/30' },
+              bodyRow: { class: 'border-b border-white/10' },
               column: {
-                headerCell: { class: 'p-4 text-left align-top' },
-                bodyCell: {
-                  class: 'p-4 text-left align-top bg-purple-950',
-                },
+                headerCell: { class: 'pr-4 py-3' },
+                bodyCell: { class: 'pr-4 py-3' },
                 columnHeaderContent: {
                   class: 'flex gap-2 items-center leading-none',
                 },
@@ -46,8 +44,8 @@ const toggleRow = (player: Player) => {
             <Column
               expander
               :pt="{
-                headerCell: { class: 'w-2' },
-                bodyCell: { class: 'w-2' },
+                headerCell: { class: 'w-8' },
+                bodyCell: { class: 'w-8' },
               }"
             >
               <template #body="{ data }">
@@ -75,9 +73,12 @@ const toggleRow = (player: Player) => {
             <Column field="position" header="POS" sortable></Column>
             <Column field="shoots" header="SH"></Column>
             <template #expansion="{ data }">
-              <div v-if="data.bio" class="space-y-2 md:ml-12">
-                <h2 class="font-bold">PLAYER BIO</h2>
-                <p>
+              <div
+                v-if="data.bio"
+                class="space-y-2 border-b border-white/10 py-3 md:ml-12"
+              >
+                <h2 class="font-bold text-orange-400">PLAYER BIO</h2>
+                <p class="text-sm text-gray-300">
                   {{ data.bio }}
                 </p>
               </div>
