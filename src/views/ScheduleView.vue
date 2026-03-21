@@ -2,11 +2,15 @@
 import { computed } from 'vue'
 import { games, type Game } from '@/data/games'
 import { ref } from 'vue'
+import { useRoute } from 'vue-router'
 import SelectButton from 'primevue/selectbutton'
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
 
-const selectedView = ref<'Upcoming' | 'Past'>('Upcoming')
+const route = useRoute()
+const selectedView = ref<'Upcoming' | 'Past'>(
+  route.query.tab === 'past' ? 'Past' : 'Upcoming',
+)
 const options = ref(['Upcoming', 'Past'])
 const getDate = (game: Game) => new Date(game.time)
 const formatDate = (game: Game) =>

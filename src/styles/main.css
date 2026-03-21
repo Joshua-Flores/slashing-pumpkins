@@ -59,3 +59,82 @@
     );
   }
 }
+
+@layer components {
+  .team-marquee-section {
+    overflow: hidden;
+    padding: 1rem 0 1.5rem;
+    background: linear-gradient(
+      180deg,
+      rgb(0 0 0 / 10%) 0%,
+      rgb(0 0 0 / 45%) 35%,
+      rgb(0 0 0 / 70%) 100%
+    );
+  }
+
+  .team-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: team-marquee-scroll 30s linear infinite;
+  }
+
+  .team-marquee-strip {
+    display: flex;
+    gap: 1rem;
+    padding-right: 1rem;
+  }
+
+  .team-marquee-image {
+    width: clamp(330px, 42vw, 480px);
+    height: clamp(210px, 27vw, 315px);
+    object-fit: cover;
+    border-radius: 0.5rem;
+    border: 2px solid var(--color-orange-400);
+  }
+
+  .scoreboard-ring {
+    position: relative;
+    margin: 0 auto;
+    width: fit-content;
+    padding: 3px;
+    border-radius: 0.375rem;
+    overflow: hidden;
+  }
+
+  .scoreboard-ring::before {
+    content: '';
+    position: absolute;
+    inset: -140%;
+    background: conic-gradient(
+      from 0deg,
+      var(--color-purple-700) 0deg,
+      var(--color-purple-700) 300deg,
+      var(--color-orange-500) 338deg,
+      var(--color-purple-700) 360deg
+    );
+    animation: scoreboard-ring-spin 2.8s linear infinite;
+  }
+
+  .scoreboard-ring > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@keyframes team-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}
+
+@keyframes scoreboard-ring-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
