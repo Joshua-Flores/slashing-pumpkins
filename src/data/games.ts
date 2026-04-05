@@ -92,6 +92,8 @@ export const games: Game[] = [
     awayTeam: 'Blue Dogs',
     homeTeam: 'Slashing Pumpkins',
     time: '2026-03-28T23:55:00-04:00',
+    awayTeamScore: 4,
+    homeTeamScore: 2,
   },
 
   // April 2026
@@ -99,6 +101,8 @@ export const games: Game[] = [
     awayTeam: 'Slashing Pumpkins',
     homeTeam: 'Megalosaurus',
     time: '2026-04-03T23:30:00-04:00',
+    awayTeamScore: 2,
+    homeTeamScore: 1,
   },
   {
     awayTeam: 'Slashing Pumpkins',
