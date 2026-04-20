@@ -108,11 +108,15 @@ export const games: Game[] = [
     awayTeam: 'Slashing Pumpkins',
     homeTeam: 'Red Wings',
     time: '2026-04-11T22:10:00-04:00',
+    awayTeamScore: 5,
+    homeTeamScore: 3,
   },
   {
     awayTeam: 'Thunder',
     homeTeam: 'Slashing Pumpkins',
     time: '2026-04-12T22:50:00-04:00',
+    awayTeamScore: 3,
+    homeTeamScore: 0,
   },
   {
     awayTeam: 'Roccos',
