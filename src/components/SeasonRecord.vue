@@ -79,6 +79,7 @@ onMounted(() => {
           <div class="flex">
             <div
               v-for="(digit, i) in toDigitArray(stat.value)"
+              v-show="started || i === toDigitArray(stat.value).length - 1"
               :key="stat.label + i"
               class="digit-container"
             >
