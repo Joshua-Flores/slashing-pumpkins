@@ -1,104 +1,162 @@
 <script setup lang="ts">
-import { RouterLink, useRouter } from 'vue-router'
-import { ref } from 'vue'
-import Menubar from 'primevue/menubar'
-import type { MenuItem } from 'primevue/menuitem'
+import { ref, watch, onMounted, onUnmounted } from 'vue'
+import { RouterLink, useRouter, useRoute } from 'vue-router'
+
+type NavLink = {
+  label: string
+  route?: string
+  url?: string
+}
+
+const links: NavLink[] = [
+  { label: 'SCHEDULE', route: '/schedule' },
+  {
+    label: 'STATS',
+    url: 'https://www.stiltweb.com/eLeague/fhl/standings.php?div=333',
+  },
+  {
+    label: 'REPLAYS',
+    url: 'https://youtube.com/playlist?list=PLjYNU_fJDirJumOS8EHFEZ1OExdFrsti-&si=su26ivhJd3Y3zLhM',
+  },
+  {
+    label: 'DROP-IN',
+    url: 'https://www.ice-finder.com/events?zipcode=22030&miles=30&eventType=Stick%20And%20Puck&eventType=Pickup%20Hockey',
+  },
+]
 
 const router = useRouter()
+const route = useRoute()
+const scrolled = ref(false)
+const open = ref(false)
 
-const handleNavigation = (route: string) => {
-  router.push(route)
+const onScroll = () => {
+  scrolled.value = window.scrollY > 24
+}
+
+const goTo = (target: string) => {
+  open.value = false
+  router.push(target)
   window.scrollTo(0, 0)
 }
 
-const menuItems = ref<MenuItem[]>([
-  {
-    label: 'SCHEDULE',
-    route: '/schedule',
-  },
-  {
-    label: 'ROSTER',
-    route: '/roster',
-  },
-  {
-    label: 'LATEST STATS',
-    url: 'http://www.stiltweb.com/eLeague/fhl/standings.php?div=328',
-    target: '_blank',
-  },
-  {
-    label: 'YOUTUBE REPLAYS',
-    url: 'https://youtube.com/playlist?list=PLjYNU_fJDirJumOS8EHFEZ1OExdFrsti-&si=su26ivhJd3Y3zLhM',
-    target: '_blank',
-  },
-  {
-    label: 'LOCAL DROP-IN TIMES',
-    url: 'https://www.ice-finder.com/events?zipcode=22030&miles=30&eventType=Stick%20And%20Puck&eventType=Pickup%20Hockey',
-    target: '_blank',
-  },
-])
+// Always dismiss the mobile menu when the route changes.
+watch(
+  () => route.fullPath,
+  () => (open.value = false),
+)
+
+onMounted(() => {
+  onScroll()
+  window.addEventListener('scroll', onScroll, { passive: true })
+})
+onUnmounted(() => window.removeEventListener('scroll', onScroll))
 </script>
 
 <template>
-  <Menubar
-    :model="menuItems"
-    breakpoint="900px"
-    :pt="{
-      root: {
-        class: `
-          sticky! top-0! z-50! h-18!
-          bg-purple-975/50! backdrop-blur-xl!
-          border-t-0! border-l-0! border-r-0! rounded-none! border-orange-400! px-4!
-          flex justify-between!
-          lg:justify-start!
-        `,
-      },
-      rootList: {
-        class: `
-          border-0! rounded-none! font-bold
-          text-xl! md:text-base!
-          px-4! py-6! min-[900px]:p-0! gap-2!
-          max-[899px]:bg-linear-to-br! max-[899px]:from-purple-975! max-[899px]:to-purple-950!
-          min-[900px]:bg-transparent!
-          h-screen! min-[900px]:h-auto!
-        `,
-      },
-      item: {
-        class: 'bg-transparent! ',
-      },
-      itemContent: {
-        class: 'bg-transparent! hover:bg-orange-400! transition! duration-150!',
-      },
-      menu: {
-        class: 'gap-8! font-semibold! max-[899px]:hidden!',
-      },
-      button: { class: 'hover:bg-transparent!' },
-      buttonIcon: {
-        class: 'lg:hidden! w-6! h-6! text-xl! text-orange-400',
-      },
-    }"
+  <header
+    class="fixed inset-x-0 top-0 z-60 border-b transition-colors duration-300"
+    :class="
+      scrolled
+        ? 'bg-ink/80 border-white/10 backdrop-blur-xl'
+        : 'border-transparent bg-transparent'
+    "
   >
-    <template #start>
-      <RouterLink to="/">
-        <img src="/logo.svg" class="mr-2 w-16" />
+    <div
+      class="mx-auto flex max-w-310 items-center justify-between gap-6 px-6 py-3"
+    >
+      <RouterLink to="/" class="flex items-center gap-3" @click="open = false">
+        <img
+          src="/logo.svg"
+          alt="Slashing Pumpkins"
+          class="h-11 drop-shadow-md"
+        />
+        <span
+          class="font-display text-fg text-[17px] leading-[0.84] font-extrabold tracking-wide uppercase"
+        >
+          SLASHING<br />PUMPKINS
+        </span>
       </RouterLink>
-    </template>
-    <template #item="{ item }">
-      <a
-        v-if="item.route"
-        @click.prevent="handleNavigation(item.route)"
-        class="hover:text-purple-975 flex cursor-pointer items-center p-2 py-1 text-white"
+
+      <!-- Desktop links -->
+      <nav class="hidden items-center gap-8 min-[900px]:flex">
+        <template v-for="link in links" :key="link.label">
+          <RouterLink
+            v-if="link.route"
+            :to="link.route"
+            class="font-display group text-fg relative flex items-center gap-1.5 py-1.5 text-base font-semibold tracking-wider uppercase opacity-85 transition-opacity hover:opacity-100"
+          >
+            {{ link.label }}
+            <span
+              class="bg-flame absolute -bottom-0.5 left-0 h-0.5 w-0 shadow-[0_0_10px_var(--color-flame)] transition-all duration-200 group-hover:w-full"
+            />
+          </RouterLink>
+          <a
+            v-else
+            :href="link.url"
+            target="_blank"
+            rel="noopener"
+            class="font-display group text-fg relative flex items-center gap-1.5 py-1.5 text-base font-semibold tracking-wider uppercase opacity-85 transition-opacity hover:opacity-100"
+          >
+            {{ link.label }}
+            <i class="pi pi-arrow-up-right text-[10px] opacity-60" />
+            <span
+              class="bg-flame absolute -bottom-0.5 left-0 h-0.5 w-0 shadow-[0_0_10px_var(--color-flame)] transition-all duration-200 group-hover:w-full"
+            />
+          </a>
+        </template>
+      </nav>
+
+      <!-- Mobile burger -->
+      <button
+        type="button"
+        class="text-flame text-2xl min-[900px]:hidden"
+        aria-label="Open menu"
+        @click="open = true"
       >
-        {{ item.label }}
-      </a>
-      <a
-        v-else
-        :href="item.url"
-        :target="item.target"
-        class="hover:text-purple-975 flex items-center gap-2 p-2 py-1 text-white"
+        <i class="pi pi-bars" />
+      </button>
+    </div>
+
+    <!-- Mobile fullscreen menu -->
+    <Transition
+      enter-active-class="transition-opacity duration-200"
+      leave-active-class="transition-opacity duration-200"
+      enter-from-class="opacity-0"
+      leave-to-class="opacity-0"
+    >
+      <div
+        v-if="open"
+        class="bg-ink-2 fixed inset-0 z-70 flex flex-col justify-center gap-2 p-8"
       >
-        {{ item.label }}
-        <i class="pi pi-arrow-up-right text-sm"></i>
-      </a>
-    </template>
-  </Menubar>
+        <button
+          type="button"
+          class="text-flame absolute top-6 right-6 text-3xl"
+          aria-label="Close menu"
+          @click="open = false"
+        >
+          <i class="pi pi-times" />
+        </button>
+        <template v-for="link in links" :key="link.label">
+          <a
+            v-if="link.route"
+            class="font-display border-b border-white/10 py-3 text-3xl font-extrabold tracking-wide uppercase"
+            @click="goTo(link.route)"
+          >
+            {{ link.label }}
+          </a>
+          <a
+            v-else
+            :href="link.url"
+            target="_blank"
+            rel="noopener"
+            class="font-display flex items-center gap-2 border-b border-white/10 py-3 text-3xl font-extrabold tracking-wide uppercase"
+            @click="open = false"
+          >
+            {{ link.label }}
+            <i class="pi pi-arrow-up-right text-base opacity-60" />
+          </a>
+        </template>
+      </div>
+    </Transition>
+  </header>
 </template>

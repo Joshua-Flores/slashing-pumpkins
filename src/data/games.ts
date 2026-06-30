@@ -16,6 +16,8 @@ export const games: Game[] = [
     awayTeam: 'Cretaceous Puck',
     homeTeam: 'Slashing Pumpkins',
     time: '2026-06-29T22:40:00-04:00',
+    awayTeamScore: 3,
+    homeTeamScore: 1,
   },
 
   // July 2026
@@ -57,3 +59,15 @@ export const games: Game[] = [
     time: '2026-08-31T19:00:00-04:00',
   },
 ]
+
+export const TEAM = 'Slashing Pumpkins'
+
+export const getDate = (game: Game): Date => new Date(game.time)
+
+export const isHomeGame = (game: Game): boolean => game.homeTeam === TEAM
+
+export const getOpponent = (game: Game): string =>
+  isHomeGame(game) ? game.awayTeam : game.homeTeam
+
+export const isPlayed = (game: Game): boolean =>
+  game.awayTeamScore !== undefined && game.homeTeamScore !== undefined
