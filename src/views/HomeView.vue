@@ -80,9 +80,9 @@ onUnmounted(() => {
         </h1>
         <p
           v-reveal="260"
-          class="mt-4 ml-0.5 text-base font-bold text-white uppercase md:text-xl lg:text-3xl"
+          class="mt-4 ml-0.5 text-xl font-bold text-white uppercase md:text-xl lg:text-3xl"
         >
-          Burying pucks since 2025. Welcome to the patch.
+          <i>Wheel, snipe, celly since 2025. Welcome to the patch.</i>
         </p>
       </div>
 
