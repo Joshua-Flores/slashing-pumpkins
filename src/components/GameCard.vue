@@ -4,101 +4,71 @@ import { computed } from 'vue'
 type Props = {
   opponent: string
   gameDate: Date
-  score?: {
-    slashingPumpkins: number
-    opponent: number
-  }
+  isHome: boolean
+  featured?: boolean
 }
 
 const props = defineProps<Props>()
 
-/**
- * Common options for Eastern Time formatting
- */
 const ET_OPTIONS = { timeZone: 'America/New_York' }
 
-// Formats the Date (e.g., "DEC 21") in Eastern Time
-const formattedDate = computed(() => {
-  return props.gameDate
+const formattedDate = computed(() =>
+  props.gameDate
     .toLocaleDateString('en-US', {
       ...ET_OPTIONS,
       month: 'short',
       day: 'numeric',
     })
-    .toUpperCase()
-})
+    .toUpperCase(),
+)
 
-// Formats the Time (e.g., "10:41 PM") in Eastern Time
-const formattedTime = computed(() => {
-  return props.gameDate.toLocaleTimeString('en-US', {
+const formattedTime = computed(() =>
+  props.gameDate.toLocaleTimeString('en-US', {
     ...ET_OPTIONS,
     hour: 'numeric',
     minute: '2-digit',
     hour12: true,
-  })
-})
-
-// Formats the score with W/T/L prefix
-const formattedScore = computed(() => {
-  if (!props.score) return null
-
-  const { slashingPumpkins, opponent } = props.score
-
-  if (slashingPumpkins > opponent) {
-    return `W ${slashingPumpkins}-${opponent}`
-  } else if (slashingPumpkins === opponent) {
-    return `T ${slashingPumpkins}-${opponent}`
-  } else {
-    return `L ${slashingPumpkins}-${opponent}`
-  }
-})
+  }),
+)
 </script>
 
 <template>
-  <div class="clip-corners bg-orange-400 p-0.5">
-    <div
-      class="clip-corners grid grid-cols-5 bg-[url(/hockey-ice.png)] bg-cover bg-center"
-    >
-      <div
-        class="col-span-3 flex items-center gap-3 p-3 text-white md:gap-6 md:px-6"
-      >
-        <img src="/logo.svg" alt="Team Logo" class="h-10 md:h-12" />
-        <img
-          src="/lightning-bolt.svg"
-          alt="VS"
-          class="mt-1 h-9 drop-shadow-lg drop-shadow-orange-300 md:mt-2 md:h-12"
-        />
-        <span class="text-sm leading-snug font-extrabold uppercase md:text-2xl">
-          {{ opponent }}
-        </span>
-      </div>
+  <div
+    class="from-panel to-ink-2 relative flex flex-col overflow-hidden rounded-[10px] border border-white/10 bg-gradient-to-b px-5.5 pt-6"
+  >
+    <!-- Top accent bar -->
+    <span
+      class="absolute inset-x-0 top-0 h-[3px]"
+      :class="
+        featured
+          ? 'bg-flame shadow-[0_0_18px_var(--color-flame)]'
+          : 'bg-white/15'
+      "
+    />
 
-      <div
-        class="col-span-2 flex flex-col items-center justify-center gap-1 p-3 md:gap-2"
+    <span
+      class="font-display text-teal self-start rounded border border-white/15 px-2.5 py-1 text-[11px] font-bold tracking-[0.16em]"
+    >
+      {{ isHome ? 'HOME' : 'AWAY' }}
+    </span>
+
+    <div class="flex items-center gap-4 py-5.5">
+      <img src="/logo.svg" alt="" class="h-13 shrink-0" />
+      <span class="font-display text-muted shrink-0 text-[22px] font-bold">
+        {{ isHome ? 'VS' : '@' }}
+      </span>
+      <span
+        class="font-display min-w-0 text-[clamp(1.25rem,2.4vw,1.75rem)] leading-[0.95] font-extrabold [overflow-wrap:anywhere] uppercase"
       >
-        <template v-if="formattedScore">
-          <div class="text-xl leading-none font-extrabold text-white">
-            {{ formattedScore }}
-          </div>
-          <div class="text-sm leading-none text-purple-300 md:text-lg">
-            FINAL {{ formattedDate }}
-          </div>
-        </template>
-        <template v-else>
-          <div
-            class="flex items-center gap-2 text-xs leading-none font-extrabold text-white sm:text-sm md:gap-3 md:text-xl"
-          >
-            <span>{{ formattedDate }}</span>
-            <span class="h-full w-0.5 bg-orange-400" />
-            <span>{{ formattedTime }}</span>
-          </div>
-          <span
-            class="text-xs leading-none text-purple-300 sm:text-sm md:text-lg"
-          >
-            FAIRFAX ICE ARENA
-          </span>
-        </template>
-      </div>
+        {{ opponent }}
+      </span>
+    </div>
+
+    <div
+      class="font-display flex items-center gap-3 border-t border-white/10 py-4 text-[13px] font-semibold tracking-wide uppercase"
+    >
+      <span>{{ formattedDate }}</span>
+      <span class="text-flame">{{ formattedTime }}</span>
     </div>
   </div>
 </template>
