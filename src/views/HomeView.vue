@@ -57,7 +57,7 @@ onUnmounted(() => {
   <div>
     <!-- Hero -->
     <section
-      class="relative flex min-h-screen flex-col justify-end overflow-hidden"
+      class="relative flex flex-col overflow-hidden md:min-h-screen md:justify-end"
     >
       <div
         class="absolute inset-0 scale-105 bg-[url(/team-photos/hero.jpeg)] bg-cover bg-[position:center_28%]"
@@ -65,17 +65,21 @@ onUnmounted(() => {
       />
       <div class="hero-scrim absolute inset-0" aria-hidden="true" />
 
-      <div class="relative z-2 mx-auto w-full max-w-310 px-6 pb-9.5">
+      <div
+        class="relative z-2 mx-auto flex w-full max-w-310 flex-col justify-end px-6 pb-9.5 max-md:min-h-[80vh]"
+      >
         <h1
           class="font-display flex flex-col text-[clamp(3.625rem,12vw,10.5rem)] leading-[0.82] font-extrabold tracking-tight uppercase [text-shadow:0_16px_50px_rgba(0,0,0,0.55)]"
         >
-          <span>Slashing</span>
+          <span v-reveal>Slashing</span>
           <span
+            v-reveal="120"
             class="text-flame [text-shadow:0_0_38px_color-mix(in_srgb,var(--color-flame)_55%,transparent)]"
             >Pumpkins</span
           >
         </h1>
         <p
+          v-reveal="260"
           class="mt-4 ml-0.5 text-base font-bold text-white uppercase md:text-xl lg:text-3xl"
         >
           Burying pucks since 2025. Welcome to the patch.
@@ -85,6 +89,7 @@ onUnmounted(() => {
       <!-- Next puck drop broadcast banner -->
       <div
         v-if="nextGame"
+        v-reveal="400"
         class="from-panel to-ink-2 border-flame relative z-2 mt-8.5 w-full border-t-2 border-b-2 bg-gradient-to-r"
       >
         <div
@@ -153,9 +158,9 @@ onUnmounted(() => {
 
     <!-- Sections -->
     <main class="mx-auto max-w-310 space-y-21 px-6 pt-21">
-      <SeasonRecord />
+      <SeasonRecord v-reveal />
       <UpcomingGames :limit="3" />
-      <LatestShots />
+      <LatestShots v-reveal />
     </main>
   </div>
 </template>

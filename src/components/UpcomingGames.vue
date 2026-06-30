@@ -33,7 +33,7 @@ const upcomingGames = computed(() => {
 
 <template>
   <section>
-    <SectionHead eyebrow="Mark your calendar" title="Upcoming Games">
+    <SectionHead v-reveal eyebrow="Mark your calendar" title="Upcoming Games">
       <template #action>
         <RouterLink
           to="/schedule"
@@ -51,6 +51,7 @@ const upcomingGames = computed(() => {
       <GameCard
         v-for="(game, index) in upcomingGames"
         :key="getDate(game).toISOString() + getOpponent(game)"
+        v-reveal="index * 120"
         :opponent="getOpponent(game)"
         :game-date="getDate(game)"
         :is-home="isHomeGame(game)"
