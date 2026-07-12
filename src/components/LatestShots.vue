@@ -58,7 +58,7 @@ const loop = [...photos, ...photos]
         <span
           class="font-display text-2xl font-extrabold uppercase md:text-[34px]"
         >
-          @slashingpumpkins
+          @fairfaxslashingpumpkins
         </span>
       </div>
       <a

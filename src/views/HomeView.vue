@@ -4,13 +4,7 @@ import UpcomingGames from '@/components/UpcomingGames.vue'
 import NextGameCountdown from '@/components/NextGameCountdown.vue'
 import SeasonRecord from '@/components/SeasonRecord.vue'
 import LatestShots from '@/components/LatestShots.vue'
-import {
-  games,
-  getDate,
-  getOpponent,
-  isHomeGame,
-  type Game,
-} from '@/data/games'
+import { games, getDate, getOpponent, type Game } from '@/data/games'
 
 const now = ref(new Date())
 let timer: ReturnType<typeof setInterval>
@@ -89,7 +83,7 @@ onUnmounted(() => {
       <!-- Next puck drop broadcast banner -->
       <div
         v-if="nextGame"
-        v-reveal="400"
+        v-reveal.immediate="400"
         class="from-panel to-ink-2 border-flame relative z-2 mt-8.5 w-full border-t-2 border-b-2 bg-gradient-to-r"
       >
         <div
@@ -109,10 +103,7 @@ onUnmounted(() => {
           <div
             class="flex items-center justify-center gap-3.5 border-white/10 p-4.5 max-md:w-full max-md:border-b md:justify-start md:border-r md:px-5.5"
           >
-            <img src="/logo.svg" alt="" class="h-[46px]" />
-            <span class="font-display text-muted text-lg font-bold">{{
-              isHomeGame(nextGame) ? 'VS' : '@'
-            }}</span>
+            <span class="font-display text-muted text-lg font-bold">VS</span>
             <span
               class="font-display text-[clamp(1.375rem,2.6vw,2rem)] leading-[0.95] font-extrabold uppercase"
               >{{ getOpponent(nextGame) }}</span
@@ -148,7 +139,7 @@ onUnmounted(() => {
 
           <!-- Countdown -->
           <div
-            class="flex items-center px-5 max-md:w-full max-md:py-4 md:ml-auto"
+            class="flex items-center px-5 pt-4 pb-3 max-md:w-full md:ml-auto"
           >
             <NextGameCountdown :target="getDate(nextGame)" />
           </div>

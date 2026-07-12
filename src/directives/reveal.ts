@@ -8,6 +8,10 @@ import type { Directive } from 'vue'
  *   <div v-reveal />        // no delay
  *   <div v-reveal="120" />  // 120ms delay
  *
+ * Add the `immediate` modifier for above-the-fold elements that should animate
+ * in on mount instead of waiting to scroll into view:
+ *   <div v-reveal.immediate="400" />
+ *
  * Tailwind utility classes only; honors prefers-reduced-motion.
  */
 const HIDDEN = ['opacity-0', 'translate-y-8']
@@ -31,6 +35,14 @@ export const vReveal: Directive<HTMLElement, number | undefined> = {
 
     if (binding.value) {
       el.style.transitionDelay = `${binding.value}ms`
+    }
+
+    // Above-the-fold elements animate in on mount rather than on scroll.
+    if (binding.modifiers.immediate) {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => el.classList.remove(...HIDDEN))
+      })
+      return
     }
 
     const observer = new IntersectionObserver(
