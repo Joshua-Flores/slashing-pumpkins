@@ -19,7 +19,8 @@ The site serves as the team's public-facing hub, providing:
 - Typescript
 - Vite for build and development
 - Vue Router for routing
-- PrimeVue for UI components
+- Nuxt UI (v4, the Vue/Vite build — not Nuxt) for UI components
+- Lucide for icons, via `<UIcon name="i-lucide-*" />`
 - Tailwind CSS for styling.
 - No backend, data is maintained manually under the ./src/data directory since it is limited.
 - Deployed on Netlify
@@ -49,6 +50,9 @@ Key Characteristics:
 ## Code Standards
 
 - Only use tailwind for styling. Avoid manually editing css files unless user gives the okay to do so.
-- Prefer to use primevue components over creating custom components.
+- Prefer to use Nuxt UI components over creating custom components. They are
+  auto-imported (`UTable`, `UTabs`, `UIcon`, …) — no import statement needed.
+- Restyle Nuxt UI components with their `:ui` prop (per-slot Tailwind classes),
+  not by overriding their CSS.
 - Never use inline styling.
 - Use `type` instead of `interface` for TypeScript type definitions.
