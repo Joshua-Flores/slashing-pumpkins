@@ -45,11 +45,25 @@ watch(
   () => (open.value = false),
 )
 
+// Lock the page behind the fullscreen menu so it can't scroll under it.
+watch(open, (isOpen) => {
+  document.body.classList.toggle('overflow-hidden', isOpen)
+})
+
+const onKeydown = (event: KeyboardEvent) => {
+  if (event.key === 'Escape') open.value = false
+}
+
 onMounted(() => {
   onScroll()
   window.addEventListener('scroll', onScroll, { passive: true })
+  window.addEventListener('keydown', onKeydown)
 })
-onUnmounted(() => window.removeEventListener('scroll', onScroll))
+onUnmounted(() => {
+  window.removeEventListener('scroll', onScroll)
+  window.removeEventListener('keydown', onKeydown)
+  document.body.classList.remove('overflow-hidden')
+})
 </script>
 
 <template>
@@ -111,13 +125,21 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
         type="button"
         class="text-flame text-2xl min-[900px]:hidden"
         aria-label="Open menu"
+        :aria-expanded="open"
         @click="open = true"
       >
         <i class="pi pi-bars" />
       </button>
     </div>
+  </header>
 
-    <!-- Mobile fullscreen menu -->
+  <!--
+    Mobile fullscreen menu. Teleported to the body because the header applies
+    `backdrop-blur` once scrolled, and a backdrop-filter makes its element a
+    containing block for fixed descendants — which would shrink this overlay
+    down to the header's own box instead of the viewport.
+  -->
+  <Teleport to="body">
     <Transition
       enter-active-class="transition-opacity duration-200"
       leave-active-class="transition-opacity duration-200"
@@ -126,7 +148,10 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
     >
       <div
         v-if="open"
-        class="bg-ink-2 fixed inset-0 z-70 flex flex-col justify-center gap-2 p-8"
+        class="bg-ink-2 text-fg fixed inset-0 z-70 flex flex-col justify-center gap-2 p-8"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu"
       >
         <button
           type="button"
@@ -158,5 +183,5 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
         </template>
       </div>
     </Transition>
-  </header>
+  </Teleport>
 </template>
