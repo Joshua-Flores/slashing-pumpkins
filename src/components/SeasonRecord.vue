@@ -45,7 +45,7 @@ const stats = computed(() => {
     ties,
     gf,
     ga,
-    points: wins * 2 + ties,
+    diff: gf - ga,
     gamesPlayed: played.length,
     totalGames: games.length,
     form: played.slice(-5).map(outcome),
@@ -58,8 +58,10 @@ const records = computed(() => [
   { value: stats.value.ties, label: 'TIES' },
 ])
 
+const formatDiff = (n: number) => (n > 0 ? `+${n}` : String(n))
+
 const splitStats = computed(() => [
-  { value: stats.value.points, label: 'POINTS', accent: true },
+  { value: formatDiff(stats.value.diff), label: 'GOAL DIFF', accent: true },
   { value: stats.value.gf, label: 'GOALS FOR', accent: false },
   { value: stats.value.ga, label: 'GOALS AGAINST', accent: false },
 ])
