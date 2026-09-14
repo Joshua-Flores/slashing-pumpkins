@@ -75,18 +75,16 @@ export const games: Game[] = [
 
   // September 2026
   {
-    // Start time not recorded; only the result was published for this game.
     awayTeam: 'Alers',
     homeTeam: 'Slashing Pumpkins',
-    time: '2026-09-05T20:00:00-04:00',
+    time: '2026-09-05T21:30:00-04:00',
     awayTeamScore: 2,
     homeTeamScore: 3,
   },
   {
-    // Start time not recorded; only the result was published for this game.
     awayTeam: 'Slashing Pumpkins',
     homeTeam: 'Bottle Caps',
-    time: '2026-09-12T20:00:00-04:00',
+    time: '2026-09-12T22:10:00-04:00',
     awayTeamScore: 3,
     homeTeamScore: 5,
   },
