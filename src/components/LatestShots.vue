@@ -53,7 +53,7 @@ const loop = [...photos, ...photos]
         <span
           class="font-display text-muted flex items-center gap-2 font-semibold tracking-[0.14em]"
         >
-          <i class="pi pi-instagram" /> FOLLOW THE PATCH
+          <UIcon name="i-lucide-instagram" class="size-4" /> FOLLOW THE PATCH
         </span>
         <span
           class="font-display text-2xl font-extrabold uppercase md:text-[34px]"
@@ -67,7 +67,7 @@ const loop = [...photos, ...photos]
         rel="noopener"
         class="ig-btn font-display inline-flex items-center gap-2.5 rounded px-5.5 py-3.5 text-[15px] font-bold tracking-wider text-white uppercase shadow-[0_12px_30px_-12px_#dd2a7b] transition hover:-translate-y-0.5"
       >
-        <i class="pi pi-instagram" /> Follow Us
+        <UIcon name="i-lucide-instagram" class="size-4" /> Follow Us
       </a>
     </div>
   </section>

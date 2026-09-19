@@ -212,7 +212,7 @@ onMounted(() => {
         to="/schedule?tab=past"
         class="font-display hover:border-flame hover:text-flame inline-flex items-center gap-2.5 rounded border-[1.5px] border-white/15 px-5.5 py-3 text-[15px] font-bold tracking-wider uppercase transition hover:shadow-[0_0_0_1px_var(--color-flame),0_0_24px_-8px_var(--color-flame)]"
       >
-        View Past Games <i class="pi pi-arrow-right text-[13px]" />
+        View Past Games <UIcon name="i-lucide-arrow-right" class="size-3.5" />
       </RouterLink>
     </div>
   </section>

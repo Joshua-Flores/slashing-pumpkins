@@ -11,7 +11,8 @@ The site is the team's public-facing hub — check out the roster and player pro
 - **Vue 3** (Composition API) + **TypeScript**
 - **Vite** — build tooling and dev server
 - **Vue Router** — client-side routing
-- **PrimeVue** — UI components
+- **Nuxt UI** — UI components
+- **Lucide** — icons (via `@iconify-json/lucide`)
 - **Tailwind CSS** — styling
 - **ESLint** + **Prettier** — code quality and formatting
 - **Netlify** — hosting and deployment

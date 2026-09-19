@@ -112,7 +112,7 @@ onUnmounted(() => {
             class="font-display group text-fg relative flex items-center gap-1.5 py-1.5 text-base font-semibold tracking-wider uppercase opacity-85 transition-opacity hover:opacity-100"
           >
             {{ link.label }}
-            <i class="pi pi-arrow-up-right text-[10px] opacity-60" />
+            <UIcon name="i-lucide-arrow-up-right" class="size-2.5 opacity-60" />
             <span
               class="bg-flame absolute -bottom-0.5 left-0 h-0.5 w-0 shadow-[0_0_10px_var(--color-flame)] transition-all duration-200 group-hover:w-full"
             />
@@ -123,12 +123,12 @@ onUnmounted(() => {
       <!-- Mobile burger -->
       <button
         type="button"
-        class="text-flame text-2xl min-[900px]:hidden"
+        class="text-flame min-[900px]:hidden"
         aria-label="Open menu"
         :aria-expanded="open"
         @click="open = true"
       >
-        <i class="pi pi-bars" />
+        <UIcon name="i-lucide-menu" class="size-6" />
       </button>
     </div>
   </header>
@@ -155,11 +155,11 @@ onUnmounted(() => {
       >
         <button
           type="button"
-          class="text-flame absolute top-6 right-6 text-3xl"
+          class="text-flame absolute top-6 right-6"
           aria-label="Close menu"
           @click="open = false"
         >
-          <i class="pi pi-times" />
+          <UIcon name="i-lucide-x" class="size-7.5" />
         </button>
         <template v-for="link in links" :key="link.label">
           <a
@@ -178,7 +178,7 @@ onUnmounted(() => {
             @click="open = false"
           >
             {{ link.label }}
-            <i class="pi pi-arrow-up-right text-base opacity-60" />
+            <UIcon name="i-lucide-arrow-up-right" class="size-4 opacity-60" />
           </a>
         </template>
       </div>

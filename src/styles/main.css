@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '@nuxt/ui';
 
 @theme {
   --color-purple-975: oklch(24% 0.13 302.717);
@@ -18,6 +19,39 @@
   --color-fg: #eef0f8;
 
   --font-display: 'Saira Condensed', 'Inter', sans-serif;
+}
+
+/**
+ * Point Nuxt UI's design tokens at the team palette so its components
+ * (`bg-default`, `text-muted`, `border-default`, `primary`, …) inherit the
+ * broadcast look instead of the stock neutral theme.
+ */
+@layer theme {
+  :root,
+  .dark {
+    --ui-primary: var(--color-flame);
+    --ui-secondary: var(--color-teal);
+    --ui-success: var(--color-win);
+    --ui-error: var(--color-loss);
+
+    --ui-bg: var(--color-ink);
+    --ui-bg-muted: var(--color-ink-2);
+    --ui-bg-elevated: var(--color-panel);
+    --ui-bg-accented: var(--color-panel-2);
+    --ui-bg-inverted: var(--color-fg);
+
+    --ui-text-dimmed: color-mix(in srgb, var(--color-muted) 65%, transparent);
+    --ui-text-muted: var(--color-muted);
+    --ui-text-toned: color-mix(in srgb, var(--color-fg) 80%, transparent);
+    --ui-text: var(--color-fg);
+    --ui-text-highlighted: #fff;
+    --ui-text-inverted: var(--color-ink);
+
+    --ui-border: rgb(255 255 255 / 10%);
+    --ui-border-muted: rgb(255 255 255 / 5%);
+    --ui-border-accented: rgb(255 255 255 / 15%);
+    --ui-border-inverted: var(--color-fg);
+  }
 }
 
 @layer base {
