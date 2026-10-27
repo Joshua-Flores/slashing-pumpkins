@@ -108,16 +108,22 @@ export const games: Game[] = [
     awayTeam: 'Slashing Pumpkins',
     homeTeam: 'Alers',
     time: '2026-10-05T23:20:00-04:00',
+    awayTeamScore: 4,
+    homeTeamScore: 6,
   },
   {
     awayTeam: 'Bottle Caps',
     homeTeam: 'Slashing Pumpkins',
     time: '2026-10-10T17:30:00-04:00',
+    awayTeamScore: 6,
+    homeTeamScore: 5,
   },
   {
     awayTeam: 'Slashing Pumpkins',
     homeTeam: 'Lightning',
     time: '2026-10-18T07:00:00-04:00',
+    awayTeamScore: 5,
+    homeTeamScore: 6,
   },
 
   // November 2026 — EST (UTC-5), DST ends Nov 1
