@@ -1,6 +1,5 @@
 // All times are Eastern Time (America/New_York)
-// EST (UTC-5) Nov–Mar 8; EDT (UTC-4) Mar 8–Nov
-// Year inferred from schedule: Jun 2026 – Nov 2026
+// Winter season: Nov 2026 – Feb 2027, all EST (UTC-5)
 
 export type Game = {
   awayTeam: string
@@ -11,128 +10,62 @@ export type Game = {
 }
 
 export const games: Game[] = [
-  // June 2026
-  {
-    awayTeam: 'Cretaceous Puck',
-    homeTeam: 'Slashing Pumpkins',
-    time: '2026-06-29T22:40:00-04:00',
-    awayTeamScore: 4,
-    homeTeamScore: 1,
-  },
-
-  // July 2026
+  // November 2026
   {
     awayTeam: 'Slashing Pumpkins',
-    homeTeam: 'Lightning',
-    time: '2026-07-12T22:50:00-04:00',
-    awayTeamScore: 5,
-    homeTeamScore: 3,
+    homeTeam: 'Bottle Caps',
+    time: '2026-11-28T17:20:00-05:00',
   },
   {
     awayTeam: 'Junkyard Dogs',
     homeTeam: 'Slashing Pumpkins',
-    time: '2026-07-20T20:00:00-04:00',
-    awayTeamScore: 7,
-    homeTeamScore: 3,
+    time: '2026-11-30T23:20:00-05:00',
   },
+
+  // December 2026
   {
     awayTeam: 'Slashing Pumpkins',
     homeTeam: 'Alers',
-    time: '2026-07-27T20:00:00-04:00',
-    awayTeamScore: 4,
-    homeTeamScore: 2,
-  },
-
-  // August 2026
-  {
-    awayTeam: 'Bottle Caps',
-    homeTeam: 'Slashing Pumpkins',
-    time: '2026-08-08T08:20:00-04:00',
-    awayTeamScore: 4,
-    homeTeamScore: 6,
-  },
-  {
-    awayTeam: 'Slashing Pumpkins',
-    homeTeam: 'Cretaceous Puck',
-    time: '2026-08-17T21:40:00-04:00',
-    awayTeamScore: 2,
-    homeTeamScore: 5,
+    time: '2026-12-14T19:20:00-05:00',
   },
   {
     awayTeam: 'Lightning',
     homeTeam: 'Slashing Pumpkins',
-    time: '2026-08-23T09:40:00-04:00',
-    awayTeamScore: 0,
-    homeTeamScore: 11,
+    time: '2026-12-27T22:40:00-05:00',
+  },
+
+  // January 2027
+  {
+    awayTeam: 'Slashing Pumpkins',
+    homeTeam: 'Megalosaurus',
+    time: '2027-01-03T22:10:00-05:00',
+  },
+  {
+    awayTeam: 'Mutiny',
+    homeTeam: 'Slashing Pumpkins',
+    time: '2027-01-18T19:00:00-05:00',
+  },
+
+  // February 2027
+  {
+    awayTeam: 'Bottle Caps',
+    homeTeam: 'Slashing Pumpkins',
+    time: '2027-02-07T07:00:00-05:00',
   },
   {
     awayTeam: 'Slashing Pumpkins',
     homeTeam: 'Junkyard Dogs',
-    time: '2026-08-31T19:00:00-04:00',
-    awayTeamScore: 6,
-    homeTeamScore: 0,
+    time: '2027-02-15T21:40:00-05:00',
   },
-
-  // September 2026
   {
     awayTeam: 'Alers',
     homeTeam: 'Slashing Pumpkins',
-    time: '2026-09-05T21:30:00-04:00',
-    awayTeamScore: 2,
-    homeTeamScore: 3,
+    time: '2027-02-20T22:40:00-05:00',
   },
   {
-    awayTeam: 'Slashing Pumpkins',
-    homeTeam: 'Bottle Caps',
-    time: '2026-09-12T22:10:00-04:00',
-    awayTeamScore: 3,
-    homeTeamScore: 5,
-  },
-  {
-    awayTeam: 'Junkyard Dogs',
+    awayTeam: 'Megalosaurus',
     homeTeam: 'Slashing Pumpkins',
-    time: '2026-09-20T07:00:00-04:00',
-    awayTeamScore: 7,
-    homeTeamScore: 1,
-  },
-  {
-    awayTeam: 'Cretaceous Puck',
-    homeTeam: 'Slashing Pumpkins',
-    time: '2026-09-28T22:00:00-04:00',
-    awayTeamScore: 5,
-    homeTeamScore: 1,
-  },
-
-  // October 2026
-  {
-    awayTeam: 'Slashing Pumpkins',
-    homeTeam: 'Alers',
-    time: '2026-10-05T23:20:00-04:00',
-    awayTeamScore: 4,
-    homeTeamScore: 6,
-  },
-  {
-    awayTeam: 'Bottle Caps',
-    homeTeam: 'Slashing Pumpkins',
-    time: '2026-10-10T17:30:00-04:00',
-    awayTeamScore: 6,
-    homeTeamScore: 5,
-  },
-  {
-    awayTeam: 'Slashing Pumpkins',
-    homeTeam: 'Lightning',
-    time: '2026-10-18T07:00:00-04:00',
-    awayTeamScore: 5,
-    homeTeamScore: 6,
-  },
-
-  // November 2026 — EST (UTC-5), DST ends Nov 1
-  {
-    awayTeam: 'Slashing Pumpkins',
-    homeTeam: 'Cretaceous Puck',
-    time: '2026-11-01T19:50:00-05:00',
-    awayTeamScore: 2,
-    homeTeamScore: 6,
+    time: '2027-02-28T20:55:00-05:00',
   },
 ]
 
