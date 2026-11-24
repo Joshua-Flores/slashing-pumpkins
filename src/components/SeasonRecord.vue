@@ -101,7 +101,7 @@ onMounted(() => {
 
 <template>
   <section ref="section">
-    <SectionHead eyebrow="Current campaign" title="Summer '26 Season" />
+    <SectionHead eyebrow="Current campaign" title="Winter '26–27 Season" />
 
     <div
       class="from-panel to-ink-2 relative overflow-hidden rounded-xl border border-white/15 bg-gradient-to-b p-1"
